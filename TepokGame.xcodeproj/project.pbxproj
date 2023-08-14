@@ -20,6 +20,7 @@
 		5C44DB262A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */; };
 		5C44DB742A8A135600B16CE8 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB732A8A135600B16CE8 /* Character.swift */; };
 		5C44DB782A8A26F000B16CE8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB772A8A26F000B16CE8 /* GameScene.sks */; };
+		5C44DB7A2A8A346600B16CE8 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB792A8A346600B16CE8 /* TestScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TepokGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5C44DB732A8A135600B16CE8 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		5C44DB772A8A26F000B16CE8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../../../Downloads/GameScene.sks; sourceTree = "<group>"; };
+		5C44DB792A8A346600B16CE8 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				5C44DB0C2A86437400B16CE8 /* Assets.xcassets */,
 				5C44DB0E2A86437400B16CE8 /* LaunchScreen.storyboard */,
 				5C44DB732A8A135600B16CE8 /* Character.swift */,
+				5C44DB792A8A346600B16CE8 /* TestScene.sks */,
 			);
 			path = TepokGame;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C44DB7A2A8A346600B16CE8 /* TestScene.sks in Resources */,
 				5C44DB0B2A86437200B16CE8 /* Main.storyboard in Resources */,
 				5C44DB782A8A26F000B16CE8 /* GameScene.sks in Resources */,
 				5C44DB0D2A86437400B16CE8 /* Assets.xcassets in Resources */,
