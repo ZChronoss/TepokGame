@@ -25,8 +25,6 @@ class GameViewController: UIViewController {
 //        skView.presentScene(scene)
         
         super.viewDidLoad()
-        
-//        let scene = GameScene(size: (CGSize(width: 2048, height: 1536)))
         if let scene = GameScene(fileNamed: "GameScene"){
             let skView = self.view as! SKView
             skView.showsFPS = true

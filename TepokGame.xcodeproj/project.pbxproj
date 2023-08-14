@@ -18,9 +18,7 @@
 		5C44DB1A2A86437400B16CE8 /* TepokGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB192A86437400B16CE8 /* TepokGameTests.swift */; };
 		5C44DB242A86437400B16CE8 /* TepokGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB232A86437400B16CE8 /* TepokGameUITests.swift */; };
 		5C44DB262A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */; };
-		5C44DB742A8A135600B16CE8 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB732A8A135600B16CE8 /* Character.swift */; };
-		5C44DB782A8A26F000B16CE8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB772A8A26F000B16CE8 /* GameScene.sks */; };
-		5C44DB7A2A8A346600B16CE8 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB792A8A346600B16CE8 /* TestScene.sks */; };
+		5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +53,7 @@
 		5C44DB1F2A86437400B16CE8 /* TepokGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TepokGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C44DB232A86437400B16CE8 /* TepokGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TepokGameUITests.swift; sourceTree = "<group>"; };
 		5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TepokGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		5C44DB732A8A135600B16CE8 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		5C44DB772A8A26F000B16CE8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../../../Downloads/GameScene.sks; sourceTree = "<group>"; };
-		5C44DB792A8A346600B16CE8 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
+		5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +104,6 @@
 		5C44DAFE2A86437200B16CE8 /* TepokGame */ = {
 			isa = PBXGroup;
 			children = (
-				5C44DB772A8A26F000B16CE8 /* GameScene.sks */,
 				59D03BEB2A8A0F2900BC08AE /* GaugeMeter.swift */,
 				5C44DAFF2A86437200B16CE8 /* AppDelegate.swift */,
 				5C44DB032A86437200B16CE8 /* Actions.sks */,
@@ -117,8 +112,7 @@
 				5C44DB092A86437200B16CE8 /* Main.storyboard */,
 				5C44DB0C2A86437400B16CE8 /* Assets.xcassets */,
 				5C44DB0E2A86437400B16CE8 /* LaunchScreen.storyboard */,
-				5C44DB732A8A135600B16CE8 /* Character.swift */,
-				5C44DB792A8A346600B16CE8 /* TestScene.sks */,
+				5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */,
 			);
 			path = TepokGame;
 			sourceTree = "<group>";
@@ -244,9 +238,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C44DB7A2A8A346600B16CE8 /* TestScene.sks in Resources */,
 				5C44DB0B2A86437200B16CE8 /* Main.storyboard in Resources */,
-				5C44DB782A8A26F000B16CE8 /* GameScene.sks in Resources */,
+				5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */,
 				5C44DB0D2A86437400B16CE8 /* Assets.xcassets in Resources */,
 				5C44DB102A86437400B16CE8 /* LaunchScreen.storyboard in Resources */,
 				5C44DB042A86437200B16CE8 /* Actions.sks in Resources */,
@@ -278,7 +271,6 @@
 				59D03BEC2A8A0F2900BC08AE /* GaugeMeter.swift in Sources */,
 				5C44DB082A86437200B16CE8 /* GameViewController.swift in Sources */,
 				5C44DB002A86437200B16CE8 /* AppDelegate.swift in Sources */,
-				5C44DB742A8A135600B16CE8 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
