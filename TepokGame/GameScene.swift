@@ -12,39 +12,15 @@ class GameScene: SKScene {
     let gaugeBackground = GaugeBackground()
     
     override func didMove(to view: SKView) {
+        let background = SKSpriteNode(imageNamed: "background_battle")
+        background.position = CGPoint(x: size.width/2, y: size.height/2)
+        background.anchorPoint = CGPoint(x: 0.5, y: 0.69)
+        background.zPosition = -1
+        background.size = CGSize(width: frame.maxX, height: frame.maxY)
+//        background.setScale(2.3)
+        addChild(background)
         addChild(gaugeBackground)
     }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
