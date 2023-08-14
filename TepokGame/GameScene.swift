@@ -11,7 +11,8 @@ import GameplayKit
 class GameScene: SKScene {
 //    let gaugeBackground = GaugeBackground()
     
-    var char = SKSpriteNode()
+    var char1 = SKSpriteNode()
+    var char2 = SKSpriteNode()
     
     override func didMove(to view: SKView) {
 //        addChild(gaugeBackground)
@@ -25,21 +26,14 @@ class GameScene: SKScene {
 //        background.setScale(2.3)
 //        addChild(background)
 //        let character = SKSpriteNode(imageNamed: "character_1")
-//        setUpChar()
         
-        if let characterNode = self.childNode(withName: "Character") as? SKSpriteNode{
-            char = characterNode
-//            char.zPosition = 50
-//            char.position = CGPoint(x: 100, y: 100)
-        }
+        char1 = setupChar(name: "Character_1")
+        char2 = setupChar(name: "Aerdith")
         
-//        setUpChar()
     }
     
-    func setUpChar(){
-        char.position = CGPoint(x: CGRectGetMidX(self.frame), y: char.size.height/2 + 10)
-        
-        addChild(char)
+    func setupChar(name: String) -> SKSpriteNode{
+        return self.childNode(withName: name) as! SKSpriteNode
     }
     
     func move(sprite: SKSpriteNode){
@@ -48,7 +42,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        move(sprite: char)
+//        move(sprite: char1)
         
     }
 }
