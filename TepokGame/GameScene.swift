@@ -48,5 +48,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+//        move(sprite: char)
+        
     }
 }

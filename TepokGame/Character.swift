@@ -10,13 +10,20 @@ import SpriteKit
 
 class Character: SKSpriteNode {
     
-    init() {
-        let texture = SKTexture(imageNamed: "character_1")
+    init(texture: SKTexture, size: CGSize){
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
-//        self.name = "Main Char"
     }
+//    init() {
+//        let texture = SKTexture(imageNamed: "character_1")
+//
+//        self.name = "Main Char"
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func move(){
+        self.position = CGPoint(x: self.position.x - 50, y: 0)
     }
 }
