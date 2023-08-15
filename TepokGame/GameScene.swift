@@ -14,6 +14,8 @@ class GameScene: SKScene {
     var char1 = SKSpriteNode()
     var char2 = SKSpriteNode()
     
+    var enemy = SKSpriteNode()
+    
     var gauge = SKSpriteNode()
     
     let green = GaugeLightGreen()
@@ -34,6 +36,8 @@ class GameScene: SKScene {
         char1 = setupSprite(name: "Character_1")
         char2 = setupSprite(name: "Aerdith")
         
+        enemy = setupSprite(name: "Enemy_1")
+        
         gauge = setupSprite(name: "GaugeBackground")
         gauge.addChild(green)
 //        redGauge = setupSprite(name: "RedGauge")
@@ -48,11 +52,15 @@ class GameScene: SKScene {
     }
     
     func move(sprite: SKSpriteNode){
-        sprite.position = CGPoint(x: sprite.position.x - 50, y: 0)
+        sprite.position = CGPoint(x: sprite.position.x - 50, y: self.frame.midY)
     }
     
     func gaugeDefault(sprite: SKSpriteNode){
         sprite.position = CGPoint(x: sprite.position.x, y: -320)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        move(sprite: char2)
     }
     
     override func update(_ currentTime: TimeInterval) {
