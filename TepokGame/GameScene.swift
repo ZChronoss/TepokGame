@@ -40,6 +40,7 @@ class GameScene: SKScene {
         
 //        gauge.addChild(redGauge)
 //        move(sprite: gauge)
+        gaugeDefault(sprite: gauge)
     }
     
     func setupSprite(name: String) -> SKSpriteNode{
@@ -48,6 +49,10 @@ class GameScene: SKScene {
     
     func move(sprite: SKSpriteNode){
         sprite.position = CGPoint(x: sprite.position.x - 50, y: 0)
+    }
+    
+    func gaugeDefault(sprite: SKSpriteNode){
+        sprite.position = CGPoint(x: sprite.position.x, y: -320)
     }
     
     override func update(_ currentTime: TimeInterval) {
