@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    let gaugeBackground = GaugeBackground()
+    let gaugeBackground = GaugeLightGreen()
 
     override func viewDidLoad() {
 //        super.viewDidLoad()

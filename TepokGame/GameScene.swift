@@ -14,6 +14,10 @@ class GameScene: SKScene {
     var char1 = SKSpriteNode()
     var char2 = SKSpriteNode()
     
+    var gauge = SKSpriteNode()
+    
+    let green = GaugeLightGreen()
+    
     override func didMove(to view: SKView) {
 //        addChild(gaugeBackground)
         
@@ -27,12 +31,18 @@ class GameScene: SKScene {
 //        addChild(background)
 //        let character = SKSpriteNode(imageNamed: "character_1")
         
-        char1 = setupChar(name: "Character_1")
-        char2 = setupChar(name: "Aerdith")
+        char1 = setupSprite(name: "Character_1")
+        char2 = setupSprite(name: "Aerdith")
         
+        gauge = setupSprite(name: "GaugeBackground")
+        gauge.addChild(green)
+//        redGauge = setupSprite(name: "RedGauge")
+        
+//        gauge.addChild(redGauge)
+//        move(sprite: gauge)
     }
     
-    func setupChar(name: String) -> SKSpriteNode{
+    func setupSprite(name: String) -> SKSpriteNode{
         return self.childNode(withName: name) as! SKSpriteNode
     }
     
