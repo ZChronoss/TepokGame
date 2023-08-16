@@ -19,6 +19,7 @@
 		5C44DB242A86437400B16CE8 /* TepokGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB232A86437400B16CE8 /* TepokGameUITests.swift */; };
 		5C44DB262A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */; };
 		5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */; };
+		5C8516762A8CD17B0094EB1B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8516752A8CD17B0094EB1B /* Character.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		5C44DB232A86437400B16CE8 /* TepokGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TepokGameUITests.swift; sourceTree = "<group>"; };
 		5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TepokGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		5C8516752A8CD17B0094EB1B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				5C44DB0C2A86437400B16CE8 /* Assets.xcassets */,
 				5C44DB0E2A86437400B16CE8 /* LaunchScreen.storyboard */,
 				5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */,
+				5C8516752A8CD17B0094EB1B /* Character.swift */,
 			);
 			path = TepokGame;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			files = (
 				5C44DB062A86437200B16CE8 /* GameScene.swift in Sources */,
 				59D03BEC2A8A0F2900BC08AE /* GaugeMeter.swift in Sources */,
+				5C8516762A8CD17B0094EB1B /* Character.swift in Sources */,
 				5C44DB082A86437200B16CE8 /* GameViewController.swift in Sources */,
 				5C44DB002A86437200B16CE8 /* AppDelegate.swift in Sources */,
 			);
