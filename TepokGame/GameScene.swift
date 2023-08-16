@@ -18,33 +18,42 @@ class GameScene: SKScene {
     
     var gauge = SKSpriteNode()
     
-    let green = GaugeLightGreen()
+    let gaugeGreen = GaugeLightGreen()
+    let gaugeCrit = GaugeCritGreen()
+    let gaugePlayer = GaugePlayer()
+    let gaugeRed = GaugeRed()
     
     override func didMove(to view: SKView) {
-//        addChild(gaugeBackground)
-        
-        
-//        let background = SKSpriteNode(imageNamed: "background_battle")
-//        background.position = CGPoint(x: size.width/2, y: size.height/2)
-//        background.anchorPoint = CGPoint(x: 0.5, y: 0.69)
-//        background.zPosition = -1
-//        background.size = CGSize(width: frame.maxX, height: frame.maxY)
-//        background.setScale(2.3)
-//        addChild(background)
-//        let character = SKSpriteNode(imageNamed: "character_1")
-        
         char1 = setupSprite(name: "Character_1")
         char2 = setupSprite(name: "Aerdith")
         
         enemy = setupSprite(name: "Enemy_1")
         
         gauge = setupSprite(name: "GaugeBackground")
-        gauge.addChild(green)
-//        redGauge = setupSprite(name: "RedGauge")
+        
+//        gauge.childNode(withName: "RedGauge")?.addChild(gaugeGreen)
+        gauge.childNode(withName:"RedGauge")?.addChild(gaugeGreen)
+        gaugeGreen.addChild(gaugeCrit)
+        gaugePlayer.zPosition = 104
+
+        gauge.childNode(withName: "RedGauge")?.addChild(gaugePlayer)
         
 //        gauge.addChild(redGauge)
 //        move(sprite: gauge)
-        gaugeDefault(sprite: gauge)
+//        gaugeDefault(sprite: gauge)
+        gaugeGreen.position = CGPoint(x:400, y:0)
+        checkPosition()
+        gaugeMove(sprite: gaugePlayer)
+    }
+    
+    func checkPosition(){
+        
+        let gaugeGreenPosition = gaugeGreen.position
+        let gaugeCritPosition = gaugeCrit.position
+        
+//        print(gaugePlayerPosition)
+        print(gaugeGreenPosition)
+        print(gaugeCritPosition)
     }
     
     func setupSprite(name: String) -> SKSpriteNode{
@@ -52,20 +61,55 @@ class GameScene: SKScene {
     }
     
     func move(sprite: SKSpriteNode){
-        sprite.position = CGPoint(x: sprite.position.x - 50, y: self.frame.midY)
+        sprite.position = CGPoint(x: sprite.position.x + 500, y: self.frame.midY)
     }
     
     func gaugeDefault(sprite: SKSpriteNode){
         sprite.position = CGPoint(x: sprite.position.x, y: -320)
     }
     
+    func gaugeMove(sprite: SKSpriteNode){
+        let newPos = SKAction.moveTo(x: 710, duration: 3.0)
+//        var oldpos = sprite.position()
+        let oldPos = SKAction.moveTo(x:0, duration: 3.0)
+        sprite.run(SKAction.repeatForever(SKAction.sequence([newPos,oldPos])))
+//        sprite.run(SKAction.sequence([newPos, oldPos]))
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         move(sprite: char2)
     }
     
+    var i = 0
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
 //        move(sprite: char1)
+        let gaugePlayerPosition = gaugePlayer.position
+        let gaugeGreenPositionMin = gaugeGreen.position
+        let gaugeGreenPositionMax = CGPoint(x:gaugeGreenPositionMin.x+gaugeGreen.size.width, y:gaugeGreenPositionMin.y)
         
+        let gaugeCritPositionMin = CGPoint(x: gaugeCrit.position.x + gaugeGreenPositionMin.x, y: gaugeCrit.position.y)
+        let gaugeCritPositionMax =  CGPoint(x:gaugeCritPositionMin.x+gaugeCrit.size.width, y:gaugeCritPositionMin.y)
+
+
+        if(gaugePlayerPosition.x < gaugeCritPositionMax.x && gaugePlayerPosition.x > gaugeCritPositionMin.x){
+            print("CRIT!!!")
+            
+            print(gaugePlayerPosition)
+            
+            print(gaugeCritPositionMin)
+            print(gaugeCritPositionMax)
+            
+            
+        }else if(gaugePlayerPosition.x < gaugeGreenPositionMax.x && gaugePlayerPosition.x > gaugeGreenPositionMin.x){
+            print("NormalDamage")
+            
+            print(gaugePlayerPosition)
+            
+            print(gaugeGreenPositionMin)
+            print(gaugeGreenPositionMax)
+        }
     }
 }
