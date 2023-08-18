@@ -9,8 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-//    let gaugeBackground = GaugeBackground()
-    
+
     var char1 = SKSpriteNode()
     var char2 = SKSpriteNode()
     
@@ -30,30 +29,15 @@ class GameScene: SKScene {
         enemy = setupSprite(name: "Enemy_1")
         
         gauge = setupSprite(name: "GaugeBackground")
-        
-//        gauge.childNode(withName: "RedGauge")?.addChild(gaugeGreen)
+
         gauge.childNode(withName:"RedGauge")?.addChild(gaugeGreen)
         gaugeGreen.addChild(gaugeCrit)
         gaugePlayer.zPosition = 104
 
         gauge.childNode(withName: "RedGauge")?.addChild(gaugePlayer)
         
-//        gauge.addChild(redGauge)
-//        move(sprite: gauge)
-//        gaugeDefault(sprite: gauge)
         gaugeGreen.position = CGPoint(x:400, y:0)
-        checkPosition()
         gaugeMove(sprite: gaugePlayer)
-    }
-    
-    func checkPosition(){
-        
-        let gaugeGreenPosition = gaugeGreen.position
-        let gaugeCritPosition = gaugeCrit.position
-        
-//        print(gaugePlayerPosition)
-        print(gaugeGreenPosition)
-        print(gaugeCritPosition)
     }
     
     func setupSprite(name: String) -> SKSpriteNode{
@@ -70,10 +54,8 @@ class GameScene: SKScene {
     
     func gaugeMove(sprite: SKSpriteNode){
         let newPos = SKAction.moveTo(x: 710, duration: 3.0)
-//        var oldpos = sprite.position()
         let oldPos = SKAction.moveTo(x:0, duration: 3.0)
         sprite.run(SKAction.repeatForever(SKAction.sequence([newPos,oldPos])))
-//        sprite.run(SKAction.sequence([newPos, oldPos]))
     }
     
     
@@ -85,7 +67,8 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-//        move(sprite: char1)
+        
+        // Gauge Checker
         let gaugePlayerPosition = gaugePlayer.position
         let gaugeGreenPositionMin = gaugeGreen.position
         let gaugeGreenPositionMax = CGPoint(x:gaugeGreenPositionMin.x+gaugeGreen.size.width, y:gaugeGreenPositionMin.y)
