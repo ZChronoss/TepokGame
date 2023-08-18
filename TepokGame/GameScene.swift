@@ -12,14 +12,26 @@ class GameScene: SKScene {
 //    let gaugeBackground = GaugeBackground()
     
 //    character
-//    var char1Sprite = SKSpriteNode()
-    var char1: Character = Character(sprite: SKSpriteNode() ,health: 200, mana: 100, atkPoint: 20, spd: 10)
+    var char1Pos: CGPoint = CGPoint(x: 1045, y: 537)
+    var aerdithPos: CGPoint = CGPoint(x: 987, y: 439)
     
-//    var aerdithSprite = SKSpriteNode()
-    var aerdith: Character = Character(sprite: SKSpriteNode(), health: 200, mana: 100, atkPoint: 20, spd: 10)
+    var char1 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), health: 200, mana: 100, atkPoint: 20, spd: 10, pos: CGPoint())
+    
+    var aerdith = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), health: 200, mana: 100, atkPoint: 20, spd: 10, pos: CGPoint())
     
 //    enemy
-    var enemy = SKSpriteNode()
+//    var enemy1Pos: CGPoint = CGPoint(x: 372, y: 515.102)
+//    var enemy2Pos: CGPoint = CGPoint(x: 202, y: 515.102)
+//    var enemy3Pos: CGPoint = CGPoint(x: 314, y: 387.297)
+//    var enemy4Pos: CGPoint = CGPoint(x: 144, y: 387.297)
+    
+    var enemy1 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint())
+    
+    var enemy2 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint(x: 202, y: 515.102))
+    
+    var enemy3 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint(x: 314, y: 387.297))
+    
+    var enemy4 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint(x: 144, y: 387.297))
     
 //    gauge
     var gauge = SKSpriteNode()
@@ -35,43 +47,30 @@ class GameScene: SKScene {
     
 //    status
     var healthBgChar1 = SKSpriteNode()
-    var healthBarChar1 = SKSpriteNode()
+    
+    var maxCharHealthBar = 0.0
+    var maxEnemyHealthBar = 0.0
     
     let green = GaugeLightGreen()
     
-//    override init(size: CGSize){
-//        let maxAspectRatio: CGFloat = 16.0/9.0
-//        let playableHeight = size.width/maxAspectRatio
-//        let playableMargin = (size.height - playableHeight)/2.0
-//        playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
-//        super.init(size: size)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder){
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func didMove(to view: SKView) {
-//        addChild(gaugeBackground)
-        
-        
-//        let background = SKSpriteNode(imageNamed: "background_battle")
-//        background.position = CGPoint(x: size.width/2, y: size.height/2)
-//        background.anchorPoint = CGPoint(x: 0.5, y: 0.69)
-//        background.zPosition = -1
-//        background.size = CGSize(width: frame.maxX, height: frame.maxY)
-//        background.setScale(2.3)
-//        addChild(background)
-//        let character = SKSpriteNode(imageNamed: "character_1")
-
-//        char1Sprite = setupSprite(name: "Character_1")
         char1.sprite = setupSprite(name: "Character_1")
+        char1.pos = char1Pos
         
-//        aerdithSprite = setupSprite(name: "Aerdith")
+    
         aerdith.sprite = setupSprite(name: "Aerdith")
+        aerdith.pos = aerdithPos
         
-        enemy = setupSprite(name: "Enemy_1")
+        enemy1.sprite = setupSprite(name: "Enemy_1")
         
+//        spawnEnemy(enemy: enemy1, name: "Enemy_1")
+        spawnEnemy(enemy: enemy2, name: "Enemy_2")
+        spawnEnemy(enemy: enemy3, name: "Enemy_3")
+        
+        setupEnemyHealth(parentNode: enemy1.sprite.childNode(withName: "Health_Bg_Enemy") as! SKSpriteNode, healthBar: enemy1.healthBar)
+        
+        maxEnemyHealthBar = enemy1.healthBar.size.width
+                
         gauge = setupSprite(name: "GaugeBackground")
         gauge.addChild(green)
         
@@ -85,7 +84,8 @@ class GameScene: SKScene {
         
 //        Status
         healthBgChar1 = setupSprite(name: "Health_Bg")
-        setupHealth(parentNode: healthBgChar1, healthBar: healthBarChar1)
+        setupHealth(parentNode: healthBgChar1, healthBar: char1.healthBar)
+        maxCharHealthBar = char1.healthBar.size.width
         
 //        redGauge = setupSprite(name: "RedGauge")
         
@@ -111,21 +111,47 @@ class GameScene: SKScene {
     func setupHealth(parentNode: SKSpriteNode, healthBar: SKSpriteNode){
         healthBar.color = SKColor.red
         healthBar.size = CGSize(width: parentNode.size.width - 10, height: parentNode.size.height - 6)
-        healthBar.position = CGPoint(x: 5, y: 3)
+        healthBar.position = CGPoint(x: 5, y: 3.5)
         healthBar.anchorPoint = CGPoint(x: 0, y: 0)
         healthBar.zPosition = 3
         parentNode.addChild(healthBar)
     }
     
-    func attack(damage: CGFloat, healthBar: SKSpriteNode){
-        healthBar.size.width -= damage
+    func setupEnemyHealth(parentNode: SKSpriteNode, healthBar: SKSpriteNode){
+        healthBar.color = SKColor.red
+        healthBar.size = CGSize(width: parentNode.size.width + 20, height: parentNode.size.height - 4)
+        healthBar.position = CGPoint(x: -parentNode.size.width/2 - 10, y: -parentNode.size.height/2 + 2.5)
+        healthBar.anchorPoint = CGPoint(x: 0, y: 0)
+        healthBar.zPosition = 3
+        parentNode.addChild(healthBar)
+    }
+    
+    func spawnEnemy(enemy: Character, name: String){
+        enemy.sprite = enemy1.sprite.copy() as! SKSpriteNode
+        enemy.sprite.name = name
+        enemy.sprite.childNode(withName: "Health_Bg_Enemy")?.name = "Health_Bg_" + name
+        enemy.sprite.isUserInteractionEnabled = true
+        enemy.takePosition()
+        self.addChild(enemy.sprite)
+        
+        setupEnemyHealth(parentNode: enemy.sprite.childNode(withName: "Health_Bg_" + name) as! SKSpriteNode, healthBar: enemy.healthBar)
+    }
+    
+    func setupHealthBg(enemy: SKSpriteNode){
+        
+    }
+    
+    func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
+        let percentage = (damage / target.health) * 100
+        let healthBarDecrease = (maxHealthBar * (percentage / 100))
+        target.healthBar.size.width -= healthBarDecrease
+        
+        print("\(healthBarDecrease)")
     }
     
     func move(sprite: SKSpriteNode){
         sprite.run(SKAction.move(to: CGPoint(x: self.frame.midX + 130, y: self.frame.midY),
                                  duration: 0.2))
-//        sprite.run(SKAction.moveBy(x: 50, y: 50, duration: 1.0))
-//        sprite.position = CGPoint(x: sprite.position.x - 50, y: self.frame.midY)
     }
     
     func gaugeDefault(sprite: SKSpriteNode){
@@ -134,24 +160,30 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         action(sprite: aerdith.sprite)
+//        spawnEnemy(sprite: enemy2.sprite)
         if let touch = touches.first {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
+//            var activeNode = Character
 
             switch node{
-            case atkBtn:
+            case enemy1.sprite:
                 print("Attack")
-                attack(damage: aerdith.atkPoint, healthBar: healthBarChar1)
-            case magBtn:
+                activeNode =
+            case enemy2.sprite:
                 print("Magic")
-            case itmBtn:
+            case enemy3.sprite:
                 print("Item")
+            case enemy4.sprite:
+                print("Enemy 4")
             default:
                 break
             }
-//            if node == atkBtn {
-//                print("Attack")
-//            }
+                        
+            if node == atkBtn {
+                print("Attack")
+//                attack(target: activeNode, damage: aerdith.atkPoint, maxHealthBar: maxEnemyHealthBar)
+            }
         }
 
     }

@@ -10,16 +10,28 @@ import SpriteKit
 
 class Character{
     var sprite: SKSpriteNode
+    var healthBar: SKSpriteNode
+    var manaBar: SKSpriteNode?
+    
     var health: CGFloat
     var mana: CGFloat
     var atkPoint: CGFloat
     var spd: CGFloat
     
-    init(sprite: SKSpriteNode, health: CGFloat, mana: CGFloat, atkPoint: CGFloat, spd: CGFloat) {
+    var pos: CGPoint
+    
+    init(sprite: SKSpriteNode, healthBar: SKSpriteNode, manaBar: SKSpriteNode?, health: CGFloat, mana: CGFloat, atkPoint: CGFloat, spd: CGFloat, pos: CGPoint) {
+        self.healthBar = healthBar
+        self.manaBar = manaBar
         self.sprite = sprite
         self.health = health
         self.mana = mana
         self.atkPoint = atkPoint
         self.spd = spd
+        self.pos = pos
+    }
+    
+    func takePosition(){
+        sprite.position = pos
     }
 }
