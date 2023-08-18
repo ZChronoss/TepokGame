@@ -53,6 +53,8 @@ class GameScene: SKScene {
     
     let green = GaugeLightGreen()
     
+    var activeEnemy = 0
+    
     override func didMove(to view: SKView) {
         char1.sprite = setupSprite(name: "Character_1")
         char1.pos = char1Pos
@@ -66,6 +68,7 @@ class GameScene: SKScene {
 //        spawnEnemy(enemy: enemy1, name: "Enemy_1")
         spawnEnemy(enemy: enemy2, name: "Enemy_2")
         spawnEnemy(enemy: enemy3, name: "Enemy_3")
+        spawnEnemy(enemy: enemy4, name: "Enemy_4")
         
         setupEnemyHealth(parentNode: enemy1.sprite.childNode(withName: "Health_Bg_Enemy") as! SKSpriteNode, healthBar: enemy1.healthBar)
         
@@ -130,7 +133,7 @@ class GameScene: SKScene {
         enemy.sprite = enemy1.sprite.copy() as! SKSpriteNode
         enemy.sprite.name = name
         enemy.sprite.childNode(withName: "Health_Bg_Enemy")?.name = "Health_Bg_" + name
-        enemy.sprite.isUserInteractionEnabled = true
+//        enemy.sprite.isUserInteractionEnabled = true
         enemy.takePosition()
         self.addChild(enemy.sprite)
         
@@ -164,25 +167,38 @@ class GameScene: SKScene {
         if let touch = touches.first {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
-//            var activeNode = Character
 
+            if(node == enemy2.sprite){
+                print("ENemy2")
+            }
             switch node{
             case enemy1.sprite:
-                print("Attack")
-                activeNode =
+                print("Enemy 1")
+                activeEnemy = 1
             case enemy2.sprite:
-                print("Magic")
+                print("Enemy 2")
+                activeEnemy = 2
             case enemy3.sprite:
-                print("Item")
+                print("Enemy 3")
+                activeEnemy = 3
             case enemy4.sprite:
                 print("Enemy 4")
+                activeEnemy = 4
             default:
                 break
             }
-                        
+
             if node == atkBtn {
                 print("Attack")
-//                attack(target: activeNode, damage: aerdith.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                if(activeEnemy == 1){
+                    attack(target: enemy1, damage: aerdith.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                }else if(activeEnemy == 2){
+                    attack(target: enemy2, damage: aerdith.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                }else if(activeEnemy == 3){
+                    attack(target: enemy3, damage: aerdith.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                }else if(activeEnemy == 4){
+                    attack(target: enemy4, damage: aerdith.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                }
             }
         }
 
