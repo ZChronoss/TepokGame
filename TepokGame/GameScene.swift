@@ -46,9 +46,15 @@ class GameScene: SKScene {
     var fleeBtn = SKSpriteNode()
     
 //    status
+    var char1Stats = SKSpriteNode()
     var healthBgChar1 = SKSpriteNode()
+    var manaBgChar1 = SKSpriteNode()
+    var char1HP = SKLabelNode()
+    var char1MP = SKLabelNode()
     
-    var maxCharHealthBar = 0.0
+    var maxChar1HealthBar = 0.0
+    var maxChar1ManaBar = 0.0
+    
     var maxEnemyHealthBar = 0.0
     
     let green = GaugeLightGreen()
@@ -83,9 +89,22 @@ class GameScene: SKScene {
 //        ini kurang flee
         
 //        Status
-        healthBgChar1 = setupSprite(name: "Health_Bg")
+        
+        
+        char1Stats = setupSprite(name: "Char1_Stats")
+        healthBgChar1 = setupChildSprite(name: "Health_Bg_1", parent:char1Stats)
         setupHealth(parentNode: healthBgChar1, healthBar: char1.healthBar)
-        maxCharHealthBar = char1.healthBar.size.width
+        manaBgChar1 = setupChildSprite(name: "Mana_Bg_1", parent:char1Stats)
+        setupMana(parentNode: manaBgChar1, manaBar: char1.manaBar!)
+        char1HP = setupLabel(name: "HPLabel1", parent: char1Stats)
+        char1MP = setupLabel(name: "MPLabel1", parent: char1Stats)
+        char1HP.text = "\(aerdith.health)"
+        char1HP.fontSize = 25
+        char1MP.text = "\(aerdith.mana)"
+        char1MP.fontSize = 25
+        
+        maxChar1HealthBar = char1.healthBar.size.width
+        maxChar1ManaBar = char1.manaBar!.size.width
         
 //        redGauge = setupSprite(name: "RedGauge")
         
@@ -94,8 +113,20 @@ class GameScene: SKScene {
         gaugeDefault(sprite: gauge)
     }
     
+    func setupStats(stat: SKSpriteNode, player: Character, name: String){
+        
+    }
+    
     func setupSprite(name: String) -> SKSpriteNode{
         return self.childNode(withName: name) as! SKSpriteNode
+    }
+    
+    func setupChildSprite(name: String, parent: SKSpriteNode) -> SKSpriteNode{
+        return parent.childNode(withName: name) as! SKSpriteNode
+    }
+    
+    func setupLabel(name: String, parent: SKSpriteNode) -> SKLabelNode{
+        return parent.childNode(withName: name) as! SKLabelNode
     }
     
     func setupBtn(name: String) -> SKSpriteNode{
@@ -109,12 +140,31 @@ class GameScene: SKScene {
     }
     
     func setupHealth(parentNode: SKSpriteNode, healthBar: SKSpriteNode){
-        healthBar.color = SKColor.red
-        healthBar.size = CGSize(width: parentNode.size.width - 10, height: parentNode.size.height - 6)
-        healthBar.position = CGPoint(x: 5, y: 3.5)
+        healthBar.color = SKColor.green
+        healthBar.size = CGSize(width: parentNode.size.width-25, height: parentNode.size.height-3.5)
+        healthBar.position = CGPoint(x: 5, y: 5.5)
         healthBar.anchorPoint = CGPoint(x: 0, y: 0)
         healthBar.zPosition = 3
         parentNode.addChild(healthBar)
+        print(parentNode.size.width)
+        print(parentNode.size.height)
+        
+        print(healthBar.size.width)
+        print(healthBar.size.height)
+    }
+    
+    func setupMana(parentNode: SKSpriteNode, manaBar: SKSpriteNode){
+        manaBar.color = SKColor.systemBlue
+        manaBar.size = CGSize(width: parentNode.size.width-25, height: parentNode.size.height-3.5)
+        manaBar.position = CGPoint(x: 5, y: 5.5)
+        manaBar.anchorPoint = CGPoint(x: 0, y: 0)
+        manaBar.zPosition = 3
+        parentNode.addChild(manaBar)
+        print(parentNode.size.width)
+        print(parentNode.size.height)
+        
+        print(manaBar.size.width)
+        print(manaBar.size.height)
     }
     
     func setupEnemyHealth(parentNode: SKSpriteNode, healthBar: SKSpriteNode){
@@ -130,16 +180,13 @@ class GameScene: SKScene {
         enemy.sprite = enemy1.sprite.copy() as! SKSpriteNode
         enemy.sprite.name = name
         enemy.sprite.childNode(withName: "Health_Bg_Enemy")?.name = "Health_Bg_" + name
-        enemy.sprite.isUserInteractionEnabled = true
+//        enemy.sprite.isUserInteractionEnabled = true
         enemy.takePosition()
         self.addChild(enemy.sprite)
         
         setupEnemyHealth(parentNode: enemy.sprite.childNode(withName: "Health_Bg_" + name) as! SKSpriteNode, healthBar: enemy.healthBar)
     }
     
-    func setupHealthBg(enemy: SKSpriteNode){
-        
-    }
     
     func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
         let percentage = (damage / target.health) * 100
@@ -168,12 +215,12 @@ class GameScene: SKScene {
 
             switch node{
             case enemy1.sprite:
-                print("Attack")
-                activeNode =
+                print("Enemy 1")
+//                activeNode =
             case enemy2.sprite:
-                print("Magic")
+                print("Enemy 2")
             case enemy3.sprite:
-                print("Item")
+                print("Enemy 3")
             case enemy4.sprite:
                 print("Enemy 4")
             default:
@@ -191,6 +238,5 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
 //        move(sprite: char1)
-        
     }
 }
