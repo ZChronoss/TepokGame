@@ -37,6 +37,9 @@ class GameScene: SKScene {
     var healthBgChar1 = SKSpriteNode()
     var healthBarChar1 = SKSpriteNode()
     
+//    turn
+    var turn = SKSpriteNode()
+    
     let green = GaugeLightGreen()
     
 //    override init(size: CGSize){
@@ -65,6 +68,7 @@ class GameScene: SKScene {
 //        let character = SKSpriteNode(imageNamed: "character_1")
 
 //        char1Sprite = setupSprite(name: "Character_1")
+        turn = setupSprite(name: "turn")
         char1.sprite = setupSprite(name: "Character_1")
         
 //        aerdithSprite = setupSprite(name: "Aerdith")
