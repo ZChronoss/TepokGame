@@ -15,9 +15,12 @@ class GameScene: SKScene {
     var char1Pos: CGPoint = CGPoint(x: 1045, y: 537)
     var aerdithPos: CGPoint = CGPoint(x: 987, y: 439)
     
-    var char1 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), health: 200, mana: 100, atkPoint: 20, spd: 10, pos: CGPoint())
+    var char1 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), status: SKSpriteNode(), health: 250, mana: 150, maxMana: 150, maxHealth: 250, atkPoint: 20, spd: 10, pos: CGPoint())
     
-    var aerdith = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), health: 200, mana: 100, atkPoint: 20, spd: 10, pos: CGPoint())
+    var aerdith = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), status: SKSpriteNode(), health: 200, mana: 100, maxMana: 100, maxHealth: 200, atkPoint: 20, spd: 10, pos: CGPoint()) // 501.5, 141.229
+    
+    //834.5, 141.229
+    //1167.7, 141.229
     
 //    enemy
 //    var enemy1Pos: CGPoint = CGPoint(x: 372, y: 515.102)
@@ -25,13 +28,13 @@ class GameScene: SKScene {
 //    var enemy3Pos: CGPoint = CGPoint(x: 314, y: 387.297)
 //    var enemy4Pos: CGPoint = CGPoint(x: 144, y: 387.297)
     
-    var enemy1 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint())
+    var enemy1 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 372, y: 515.102))
     
-    var enemy2 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint(x: 202, y: 515.102))
+    var enemy2 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 202, y: 515.102))
     
-    var enemy3 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint(x: 314, y: 387.297))
+    var enemy3 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 314, y: 387.297))
     
-    var enemy4 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, health: 200, mana: 0, atkPoint: 10, spd: 5, pos: CGPoint(x: 144, y: 387.297))
+    var enemy4 = Character(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 144, y: 387.297))
     
 //    gauge
     var gauge = SKSpriteNode()
@@ -52,8 +55,17 @@ class GameScene: SKScene {
     var char1HP = SKLabelNode()
     var char1MP = SKLabelNode()
     
+    var char2Stats = SKSpriteNode()
+    var healthBgChar2 = SKSpriteNode()
+    var manaBgChar2 = SKSpriteNode()
+    var char2HP = SKLabelNode()
+    var char2MP = SKLabelNode()
+    
     var maxChar1HealthBar = 0.0
     var maxChar1ManaBar = 0.0
+    
+    var maxChar2HealthBar = 0.0
+    var maxChar2ManaBar = 0.0
     
     var maxEnemyHealthBar = 0.0
     
@@ -89,22 +101,37 @@ class GameScene: SKScene {
 //        ini kurang flee
         
 //        Status
+        char1.status = setupSprite(name: "Char1_Stats")
         
-        
-        char1Stats = setupSprite(name: "Char1_Stats")
-        healthBgChar1 = setupChildSprite(name: "Health_Bg_1", parent:char1Stats)
+        healthBgChar1 = setupChildSprite(name: "Health_Bg_Char1", parent:char1.status)
         setupHealth(parentNode: healthBgChar1, healthBar: char1.healthBar)
-        manaBgChar1 = setupChildSprite(name: "Mana_Bg_1", parent:char1Stats)
+        manaBgChar1 = setupChildSprite(name: "Mana_Bg_Char1", parent:char1.status)
         setupMana(parentNode: manaBgChar1, manaBar: char1.manaBar!)
-        char1HP = setupLabel(name: "HPLabel1", parent: char1Stats)
-        char1MP = setupLabel(name: "MPLabel1", parent: char1Stats)
-        char1HP.text = "\(aerdith.health)"
+        char1HP = setupLabel(name: "HPLabel1", parent: char1.status)
+        char1MP = setupLabel(name: "MPLabel1", parent: char1.status)
+        char1HP.text = "\(char1.health)"
         char1HP.fontSize = 25
-        char1MP.text = "\(aerdith.mana)"
+        char1MP.text = "\(char1.mana)"
         char1MP.fontSize = 25
         
         maxChar1HealthBar = char1.healthBar.size.width
         maxChar1ManaBar = char1.manaBar!.size.width
+        
+        aerdith.status = setupSprite(name: "Char2_Stats")
+        
+        healthBgChar2 = setupChildSprite(name: "Health_Bg_Char2", parent:aerdith.status)
+        setupHealth(parentNode: healthBgChar2, healthBar: aerdith.healthBar)
+        manaBgChar2 = setupChildSprite(name: "Mana_Bg_Char2", parent:aerdith.status)
+        setupMana(parentNode: manaBgChar2, manaBar: aerdith.manaBar!)
+        char2HP = setupLabel(name: "HPLabel2", parent: aerdith.status)
+        char2MP = setupLabel(name: "MPLabel2", parent: aerdith.status)
+        char2HP.text = "\(aerdith.health)"
+        char2HP.fontSize = 25
+        char2MP.text = "\(aerdith.mana)"
+        char2MP.fontSize = 25
+        
+        maxChar2HealthBar = aerdith.healthBar.size.width
+        maxChar2ManaBar = aerdith.manaBar!.size.width
         
 //        redGauge = setupSprite(name: "RedGauge")
         
@@ -113,9 +140,7 @@ class GameScene: SKScene {
         gaugeDefault(sprite: gauge)
     }
     
-    func setupStats(stat: SKSpriteNode, player: Character, name: String){
-        
-    }
+//    func setupBars(Menu)
     
     func setupSprite(name: String) -> SKSpriteNode{
         return self.childNode(withName: name) as! SKSpriteNode
@@ -144,13 +169,8 @@ class GameScene: SKScene {
         healthBar.size = CGSize(width: parentNode.size.width-25, height: parentNode.size.height-3.5)
         healthBar.position = CGPoint(x: 5, y: 5.5)
         healthBar.anchorPoint = CGPoint(x: 0, y: 0)
-        healthBar.zPosition = 3
+        healthBar.zPosition = 5
         parentNode.addChild(healthBar)
-        print(parentNode.size.width)
-        print(parentNode.size.height)
-        
-        print(healthBar.size.width)
-        print(healthBar.size.height)
     }
     
     func setupMana(parentNode: SKSpriteNode, manaBar: SKSpriteNode){
@@ -158,13 +178,8 @@ class GameScene: SKScene {
         manaBar.size = CGSize(width: parentNode.size.width-25, height: parentNode.size.height-3.5)
         manaBar.position = CGPoint(x: 5, y: 5.5)
         manaBar.anchorPoint = CGPoint(x: 0, y: 0)
-        manaBar.zPosition = 3
+        manaBar.zPosition = 5
         parentNode.addChild(manaBar)
-        print(parentNode.size.width)
-        print(parentNode.size.height)
-        
-        print(manaBar.size.width)
-        print(manaBar.size.height)
     }
     
     func setupEnemyHealth(parentNode: SKSpriteNode, healthBar: SKSpriteNode){
@@ -187,13 +202,14 @@ class GameScene: SKScene {
         setupEnemyHealth(parentNode: enemy.sprite.childNode(withName: "Health_Bg_" + name) as! SKSpriteNode, healthBar: enemy.healthBar)
     }
     
-    
     func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
-        let percentage = (damage / target.health) * 100
+        
+        let percentage = (damage / target.maxHealth) * 100
         let healthBarDecrease = (maxHealthBar * (percentage / 100))
         target.healthBar.size.width -= healthBarDecrease
-        
-        print("\(healthBarDecrease)")
+        target.health -= damage
+        print(target.health)
+//        print("\(healthBarDecrease)")
     }
     
     func move(sprite: SKSpriteNode){
@@ -229,8 +245,20 @@ class GameScene: SKScene {
                         
             if node == atkBtn {
                 print("Attack")
-//                attack(target: activeNode, damage: aerdith.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                attack(target: char1, damage: 10, maxHealthBar: maxChar1HealthBar)
+                update()
             }
+        }
+        func update(){
+            char1HP.text = "\(char1.health)"
+            char1HP.fontSize = 25
+            char1MP.text = "\(char1.mana)"
+            char1MP.fontSize = 25
+            
+            char2HP.text = "\(aerdith.health)"
+            char2HP.fontSize = 25
+            char2MP.text = "\(aerdith.mana)"
+            char2MP.fontSize = 25
         }
 
     }
@@ -238,5 +266,6 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
 //        move(sprite: char1)
+
     }
 }
