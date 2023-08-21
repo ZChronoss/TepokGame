@@ -19,6 +19,7 @@ class Character{
     var spd: CGFloat
     
     var pos: CGPoint
+    var didAction = false
     
     init(sprite: SKSpriteNode, healthBar: SKSpriteNode, manaBar: SKSpriteNode?, health: CGFloat, mana: CGFloat, atkPoint: CGFloat, spd: CGFloat, pos: CGPoint) {
         self.healthBar = healthBar
@@ -33,5 +34,11 @@ class Character{
     
     func takePosition(){
         sprite.position = pos
+    }
+    
+    func moveIn(frame: CGRect){}
+    
+    func moveOut(){
+        sprite.run(SKAction.move(to: self.pos, duration: 0.2))
     }
 }
