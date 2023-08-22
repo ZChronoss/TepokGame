@@ -68,6 +68,11 @@ class GameScene: SKScene {
 //        let character = SKSpriteNode(imageNamed: "character_1")
 
 //        char1Sprite = setupSprite(name: "Character_1")
+        
+        let mainMenuMusic = SKAudioNode(fileNamed: "BattleSceneSong.wav")
+        self.addChild(mainMenuMusic)
+        
+        
         turn = setupSprite(name: "turn")
         char1.sprite = setupSprite(name: "Character_1")
         

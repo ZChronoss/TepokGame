@@ -20,10 +20,12 @@
 		5C44DB262A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */; };
 		5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */; };
 		5C8516762A8CD17B0094EB1B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8516752A8CD17B0094EB1B /* Character.swift */; };
+		CC129F882A94B3940092FF0B /* BattleSceneSong.wav in Resources */ = {isa = PBXBuildFile; fileRef = CC129F862A94B3920092FF0B /* BattleSceneSong.wav */; };
+		CC129F892A94B3940092FF0B /* MainMenuSong.wav in Resources */ = {isa = PBXBuildFile; fileRef = CC129F872A94B3940092FF0B /* MainMenuSong.wav */; };
 		CC5C1F962A8F706000F57578 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F952A8F706000F57578 /* MainMenu.swift */; };
 		CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F972A8F707100F57578 /* MainMenu.sks */; };
-		CC5C1F9A2A8F7A8200F57578 /* NewGame.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F992A8F7A8200F57578 /* NewGame.sks */; };
-		CC5C1F9C2A8F7A9800F57578 /* NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F9B2A8F7A9800F57578 /* NewGame.swift */; };
+		CC5C1F9E2A94930A00F57578 /* OptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F9D2A94930A00F57578 /* OptionMenu.swift */; };
+		CC5C1FA02A94931D00F57578 /* OptionMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F9F2A94931D00F57578 /* OptionMenu.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,10 +62,12 @@
 		5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TepokGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		5C8516752A8CD17B0094EB1B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		CC129F862A94B3920092FF0B /* BattleSceneSong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BattleSceneSong.wav; sourceTree = "<group>"; };
+		CC129F872A94B3940092FF0B /* MainMenuSong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MainMenuSong.wav; sourceTree = "<group>"; };
 		CC5C1F952A8F706000F57578 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		CC5C1F972A8F707100F57578 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
-		CC5C1F992A8F7A8200F57578 /* NewGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = NewGame.sks; sourceTree = "<group>"; };
-		CC5C1F9B2A8F7A9800F57578 /* NewGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGame.swift; sourceTree = "<group>"; };
+		CC5C1F9D2A94930A00F57578 /* OptionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMenu.swift; sourceTree = "<group>"; };
+		CC5C1F9F2A94931D00F57578 /* OptionMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionMenu.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 		5C44DAFE2A86437200B16CE8 /* TepokGame */ = {
 			isa = PBXGroup;
 			children = (
+				CC129F862A94B3920092FF0B /* BattleSceneSong.wav */,
+				CC129F872A94B3940092FF0B /* MainMenuSong.wav */,
 				59D03BEB2A8A0F2900BC08AE /* GaugeMeter.swift */,
 				5C44DAFF2A86437200B16CE8 /* AppDelegate.swift */,
 				5C44DB032A86437200B16CE8 /* Actions.sks */,
@@ -126,8 +132,8 @@
 				5C8516752A8CD17B0094EB1B /* Character.swift */,
 				CC5C1F952A8F706000F57578 /* MainMenu.swift */,
 				CC5C1F972A8F707100F57578 /* MainMenu.sks */,
-				CC5C1F992A8F7A8200F57578 /* NewGame.sks */,
-				CC5C1F9B2A8F7A9800F57578 /* NewGame.swift */,
+				CC5C1F9D2A94930A00F57578 /* OptionMenu.swift */,
+				CC5C1F9F2A94931D00F57578 /* OptionMenu.sks */,
 			);
 			path = TepokGame;
 			sourceTree = "<group>";
@@ -253,10 +259,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC129F892A94B3940092FF0B /* MainMenuSong.wav in Resources */,
+				CC129F882A94B3940092FF0B /* BattleSceneSong.wav in Resources */,
 				5C44DB0B2A86437200B16CE8 /* Main.storyboard in Resources */,
 				CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */,
-				CC5C1F9A2A8F7A8200F57578 /* NewGame.sks in Resources */,
 				5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */,
+				CC5C1FA02A94931D00F57578 /* OptionMenu.sks in Resources */,
 				5C44DB0D2A86437400B16CE8 /* Assets.xcassets in Resources */,
 				5C44DB102A86437400B16CE8 /* LaunchScreen.storyboard in Resources */,
 				5C44DB042A86437200B16CE8 /* Actions.sks in Resources */,
@@ -285,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C44DB062A86437200B16CE8 /* GameScene.swift in Sources */,
-				CC5C1F9C2A8F7A9800F57578 /* NewGame.swift in Sources */,
+				CC5C1F9E2A94930A00F57578 /* OptionMenu.swift in Sources */,
 				CC5C1F962A8F706000F57578 /* MainMenu.swift in Sources */,
 				59D03BEC2A8A0F2900BC08AE /* GaugeMeter.swift in Sources */,
 				5C8516762A8CD17B0094EB1B /* Character.swift in Sources */,

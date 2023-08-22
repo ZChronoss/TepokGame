@@ -14,6 +14,11 @@ class MainMenu: SKScene {
     var loadGameBtn = SKSpriteNode()
     var optionBtn = SKSpriteNode()
     
+    override func didMove(to view: SKView) {
+        let mainMenuMusic = SKAudioNode(fileNamed: "MainMenuSong.wav")
+        self.addChild(mainMenuMusic)
+    }
+    
     func setupSprite(name: String) -> SKSpriteNode{
         return self.childNode(withName: name) as! SKSpriteNode
     }
