@@ -22,6 +22,10 @@
 		5C8516762A8CD17B0094EB1B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8516752A8CD17B0094EB1B /* Character.swift */; };
 		5CDE8F262A8F70D80037EDB8 /* Controllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE8F252A8F70D80037EDB8 /* Controllable.swift */; };
 		5CDE8F282A8F70E30037EDB8 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE8F272A8F70E30037EDB8 /* Enemy.swift */; };
+		CC5C1F962A8F706000F57578 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F952A8F706000F57578 /* MainMenu.swift */; };
+		CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F972A8F707100F57578 /* MainMenu.sks */; };
+		CC5C1F9A2A8F7A8200F57578 /* NewGame.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F992A8F7A8200F57578 /* NewGame.sks */; };
+		CC5C1F9C2A8F7A9800F57578 /* NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F9B2A8F7A9800F57578 /* NewGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		5C8516752A8CD17B0094EB1B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		5CDE8F252A8F70D80037EDB8 /* Controllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllable.swift; sourceTree = "<group>"; };
 		5CDE8F272A8F70E30037EDB8 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		CC5C1F952A8F706000F57578 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		CC5C1F972A8F707100F57578 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		CC5C1F992A8F7A8200F57578 /* NewGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = NewGame.sks; sourceTree = "<group>"; };
+		CC5C1F9B2A8F7A9800F57578 /* NewGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,10 @@
 				5C8516752A8CD17B0094EB1B /* Character.swift */,
 				5CDE8F252A8F70D80037EDB8 /* Controllable.swift */,
 				5CDE8F272A8F70E30037EDB8 /* Enemy.swift */,
+				CC5C1F952A8F706000F57578 /* MainMenu.swift */,
+				CC5C1F972A8F707100F57578 /* MainMenu.sks */,
+				CC5C1F992A8F7A8200F57578 /* NewGame.sks */,
+				CC5C1F9B2A8F7A9800F57578 /* NewGame.swift */,
 			);
 			path = TepokGame;
 			sourceTree = "<group>";
@@ -248,6 +260,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C44DB0B2A86437200B16CE8 /* Main.storyboard in Resources */,
+				CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */,
+				CC5C1F9A2A8F7A8200F57578 /* NewGame.sks in Resources */,
 				5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */,
 				5C44DB0D2A86437400B16CE8 /* Assets.xcassets in Resources */,
 				5C44DB102A86437400B16CE8 /* LaunchScreen.storyboard in Resources */,
@@ -279,6 +293,8 @@
 				5CDE8F282A8F70E30037EDB8 /* Enemy.swift in Sources */,
 				5CDE8F262A8F70D80037EDB8 /* Controllable.swift in Sources */,
 				5C44DB062A86437200B16CE8 /* GameScene.swift in Sources */,
+				CC5C1F9C2A8F7A9800F57578 /* NewGame.swift in Sources */,
+				CC5C1F962A8F706000F57578 /* MainMenu.swift in Sources */,
 				59D03BEC2A8A0F2900BC08AE /* GaugeMeter.swift in Sources */,
 				5C8516762A8CD17B0094EB1B /* Character.swift in Sources */,
 				5C44DB082A86437200B16CE8 /* GameViewController.swift in Sources */,
