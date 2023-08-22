@@ -16,19 +16,19 @@ class Character{
     
     var health: CGFloat
     var mana: CGFloat
-    var maxMana: CGFloat
-    var maxHealth: CGFloat
     var atkPoint: CGFloat
     var spd: CGFloat
+    
+    var maxHealth: CGFloat
+    var maxMana: CGFloat
     
     var pos: CGPoint
     var didAction = false
     
-    init(sprite: SKSpriteNode, healthBar: SKSpriteNode, manaBar: SKSpriteNode? = nil, status:SKSpriteNode, health: CGFloat, mana: CGFloat, maxMana: CGFloat, maxHealth: CGFloat, atkPoint: CGFloat, spd: CGFloat, pos: CGPoint) {
-        self.sprite = sprite
+    init(sprite: SKSpriteNode, healthBar: SKSpriteNode, manaBar: SKSpriteNode?, status:SKSpriteNode, health: CGFloat, mana: CGFloat, maxMana: CGFloat, maxHealth: CGFloat, atkPoint: CGFloat, spd: CGFloat, pos: CGPoint) {
         self.healthBar = healthBar
         self.manaBar = manaBar
-        self.status = status
+        self.sprite = sprite
         self.health = health
         self.mana = mana
         self.maxMana = maxMana

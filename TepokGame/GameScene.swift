@@ -63,7 +63,6 @@ class GameScene: SKScene {
     var maxChar2ManaBar = 0.0
     
     var maxEnemyHealthBar = 0.0
- 
     
     let green = GaugeLightGreen()
     
@@ -197,6 +196,7 @@ class GameScene: SKScene {
         enemy.sprite = enemy1.sprite.copy() as! SKSpriteNode
         enemy.sprite.name = name
         enemy.sprite.childNode(withName: "Health_Bg_Enemy")?.name = "Health_Bg_" + name
+//        enemy.sprite.isUserInteractionEnabled = true
         enemy.takePosition()
         self.addChild(enemy.sprite)
         
