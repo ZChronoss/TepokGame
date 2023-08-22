@@ -286,6 +286,8 @@ class GameScene: SKScene {
                     
                     if node == atkBtn {
                         print("Attack")
+                        let slashSound = SKAction.playSoundFileNamed("slash", waitForCompletion: false)
+                        run(slashSound)
                         if(activeEnemy == 1){
                             if(enemy1.health <= 0){
                                 activeEnemy = 2
