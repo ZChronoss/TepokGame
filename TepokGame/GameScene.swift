@@ -12,18 +12,18 @@ class GameScene: SKScene {
 //    let gaugeBackground = GaugeBackground()
     
 //    character
-    var char1 = Controllable(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), status: SKSpriteNode(), health: 250, mana: 150, maxMana: 150, maxHealth: 250, atkPoint: 20, spd: 10, pos: CGPoint(x: 1045, y: 537))
+    var char1 = Controllable(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), status: SKSpriteNode(), health: 250, mana: 150, atkPoint: 20, spd: 10, maxHealth: 250, maxMana: 150, pos: CGPoint(x: 1045, y: 537))
     
-    var aerdith = Controllable(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), status: SKSpriteNode(), health: 200, mana: 100, maxMana: 100, maxHealth: 200, atkPoint: 20, spd: 10, pos: CGPoint(x: 987, y: 439))
+    var aerdith = Controllable(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), status: SKSpriteNode(), health: 200, mana: 100, atkPoint: 20, spd: 10, maxHealth: 200, maxMana: 100, pos: CGPoint(x: 987, y: 439))
 
     
-    var enemy1 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 372, y: 515.102))
+    var enemy1 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 372, y: 515.102))
     
-    var enemy2 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 202, y: 515.102))
+    var enemy2 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 202, y: 515.102))
     
-    var enemy3 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 314, y: 387.297))
+    var enemy3 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 314, y: 387.297))
     
-    var enemy4 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, maxMana: 0, maxHealth: 200, atkPoint: 10, spd: 5, pos: CGPoint(x: 144, y: 387.297))
+    var enemy4 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 144, y: 387.297))
 
     var listOfMove: [Character] = []
     var listOfControllables: [Controllable] = []
@@ -212,6 +212,19 @@ class GameScene: SKScene {
             target.healthBar.size.width = 0
 //            target.healthBar.color = .clear
             target.sprite.removeFromParent()
+            if let i = sortedListOfMove.firstIndex(of: target) {
+                sortedListOfMove.remove(at: i)
+            }
+            
+            if target is Controllable{
+                if let i = listOfControllables.firstIndex(of: target as! Controllable){
+                    listOfControllables.remove(at: i)
+                }
+            }else{
+                if let i = listOfEnemies.firstIndex(of: target as! Enemy){
+                    listOfEnemies.remove(at: i)
+                }
+            }
         }else{
             let percentage = (damage / target.maxHealth) * 100
             let healthBarDecrease = (maxHealthBar * (percentage / 100))
@@ -235,60 +248,83 @@ class GameScene: SKScene {
             let node = self.atPoint(pos)
             
             if(sortedListOfMove.first! is Enemy){
-                attack(target: char1, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxChar1HealthBar)
-                update()
-                sortedListOfMove.first!.didAction = true
-            }else{
-                switch node{
-                case enemy1.sprite:
-                    print("Enemy 1")
-                    activeEnemy = 1
-                case enemy2.sprite:
-                    print("Enemy 2")
-                    activeEnemy = 2
-                case enemy3.sprite:
-                    print("Enemy 3")
-                    activeEnemy = 3
-                case enemy4.sprite:
-                    print("Enemy 4")
-                    activeEnemy = 4
-                default:
-                    break
+                if(!listOfControllables.isEmpty){
+                    let random = Int.random(in: 0...listOfControllables.count - 1)
+                    attack(target: listOfControllables[random], damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxChar1HealthBar)
+                    updateStat()
+                    sortedListOfMove.first!.didAction = true
                 }
                 
-                if node == atkBtn {
-                    print("Attack")
-                    if(activeEnemy == 1){
-                        attack(target: enemy1, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
-                    }else if(activeEnemy == 2){
-                        attack(target: enemy2, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
-                    }else if(activeEnemy == 3){
-                        attack(target: enemy3, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
-                    }else if(activeEnemy == 4){
-                        attack(target: enemy4, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                
+            }else{
+                if(listOfEnemies.isEmpty){
+                    print("All Enemies are Dead")
+                }else if listOfControllables.isEmpty{
+                    print("All heroes are dead")
+                }else{
+                    switch node{
+                    case enemy1.sprite:
+                        print("Enemy 1")
+                        activeEnemy = 1
+                    case enemy2.sprite:
+                        print("Enemy 2")
+                        activeEnemy = 2
+                    case enemy3.sprite:
+                        print("Enemy 3")
+                        activeEnemy = 3
+                    case enemy4.sprite:
+                        print("Enemy 4")
+                        activeEnemy = 4
+                    default:
+                        break
                     }
-                    sortedListOfMove.first!.didAction = true
+                    
+                    if node == atkBtn {
+                        print("Attack")
+                        if(activeEnemy == 1){
+                            if(enemy1.health <= 0){
+                                activeEnemy = 2
+                            }else{
+                                attack(target: enemy1, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                            }
+                        }else if(activeEnemy == 2){
+                            if(enemy2.health <= 0){
+                                activeEnemy = 3
+                            }else{
+                                attack(target: enemy2, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                            }
+                        }else if(activeEnemy == 3){
+                            if(enemy3.health <= 0){
+                                activeEnemy = 4
+                            }else{
+                                attack(target: enemy3, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                            }
+                        }else if(activeEnemy == 4){
+                            if(enemy4.health <= 0){
+                                activeEnemy = 1
+                            }else{
+                                attack(target: enemy4, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
+                            }
+                        }
+                        sortedListOfMove.first!.didAction = true
+                    }
                 }
             }
             
             if sortedListOfMove.first!.didAction{
-                if(sortedListOfMove.first!.health <= 0){
-                    sortedListOfMove.removeFirst()
-                }else{
-                    if sortedListOfMove.first! is Controllable{
-                        actionBack.run(SKAction.move(to: CGPoint(x: 1910.01, y: actionBack.position.y), duration: 0.2))
-                    }
-                    sortedListOfMove.first!.moveOut()
-                    
-                    sortedListOfMove.first!.didAction = false
-                    
-                    sortedListOfMove.append(sortedListOfMove.first!)
-                    sortedListOfMove.removeFirst()
+                if sortedListOfMove.first! is Controllable{
+                    actionBack.run(SKAction.move(to: CGPoint(x: 1910.01, y: actionBack.position.y), duration: 0.2))
                 }
+                sortedListOfMove.first!.moveOut()
+                
+                sortedListOfMove.first!.didAction = false
+                
+                sortedListOfMove.append(sortedListOfMove.first!)
+                sortedListOfMove.removeFirst()
                 
             }
         }
-        func update(){
+        func updateStat(){
             char1HP.text = "\(char1.health)"
             char1HP.fontSize = 25
             char1MP.text = "\(char1.mana)"
@@ -299,7 +335,6 @@ class GameScene: SKScene {
             char2MP.text = "\(aerdith.mana)"
             char2MP.fontSize = 25
         }
-
     }
     
     override func update(_ currentTime: TimeInterval) {
