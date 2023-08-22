@@ -70,6 +70,11 @@ class GameScene: SKScene {
 
     
     override func didMove(to view: SKView) {
+        
+//    Battle scene music
+        let battleMusic = SKAudioNode(fileNamed: "BattleSceneSong.wav")
+        self.addChild(battleMusic)
+        
         char1.sprite = setupSprite(name: "Character_1")
         
         aerdith.sprite = setupSprite(name: "Aerdith")
