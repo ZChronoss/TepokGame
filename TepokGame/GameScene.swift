@@ -347,4 +347,29 @@ class GameScene: SKScene {
 //        move(sprite: char1)
 
     }
+    
+    func buildSprite(name: String)-> SKSpriteNode{
+        var sprite = SKSpriteNode()
+        var textureAtlas = SKTextureAtlas(named: name)
+        var textureArray:[SKTexture] = []
+
+        for i in 0...textureAtlas.textureNames.count-1{
+            textureArray.append(textureAtlas.textureNamed("\(name)_\(i)"))
+        }
+        
+        sprite = SKSpriteNode(imageNamed: textureAtlas.textureNames[0])
+        sprite.setScale(3)
+        sprite.position = CGPoint(x: 640, y: 320)
+        sprite.run(
+            SKAction.repeatForever(
+                SKAction.animate(
+                    with: textureArray,
+                    timePerFrame: 0.15
+                )
+            )
+        )
+        
+        
+        return sprite
+    }
 }
