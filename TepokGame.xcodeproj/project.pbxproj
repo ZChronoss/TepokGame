@@ -29,6 +29,7 @@
 		CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F972A8F707100F57578 /* MainMenu.sks */; };
 		CC5C1F9E2A94930A00F57578 /* OptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F9D2A94930A00F57578 /* OptionMenu.swift */; };
 		CC5C1FA02A94931D00F57578 /* OptionMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F9F2A94931D00F57578 /* OptionMenu.sks */; };
+		CC7EC59E2A94FE8F006836B9 /* slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CC7EC59D2A94FE8F006836B9 /* slash.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		CC5C1F972A8F707100F57578 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		CC5C1F9D2A94930A00F57578 /* OptionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMenu.swift; sourceTree = "<group>"; };
 		CC5C1F9F2A94931D00F57578 /* OptionMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionMenu.sks; sourceTree = "<group>"; };
+		CC7EC59D2A94FE8F006836B9 /* slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slash.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				5CA1903F2A94CABE000536DD /* Info.plist */,
 				5CA1903D2A94CA45000536DD /* Font */,
+				CC7EC59D2A94FE8F006836B9 /* slash.mp3 */,
 				CC129F862A94B3920092FF0B /* BattleSceneSong.wav */,
 				CC129F872A94B3940092FF0B /* MainMenuSong.wav */,
 				594923972A8B6D9100E9B6A4 /* Gauge */,
@@ -294,6 +297,7 @@
 				CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */,
 				5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */,
 				CC5C1FA02A94931D00F57578 /* OptionMenu.sks in Resources */,
+				CC7EC59E2A94FE8F006836B9 /* slash.mp3 in Resources */,
 				5C44DB0D2A86437400B16CE8 /* Assets.xcassets in Resources */,
 				5C44DB102A86437400B16CE8 /* LaunchScreen.storyboard in Resources */,
 				5C44DB042A86437200B16CE8 /* Actions.sks in Resources */,
