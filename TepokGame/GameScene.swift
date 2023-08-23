@@ -33,6 +33,10 @@ class GameScene: SKScene {
     
 //    gauge
     var gauge = SKSpriteNode()
+    let gaugeGreen = GaugeLightGreen()
+    let gaugeCrit = GaugeCritGreen()
+    let gaugePlayer = GaugePlayer()
+    let gaugeRed = GaugeRed()
     
 //    action background
     var actionBack = SKSpriteNode()
@@ -217,6 +221,8 @@ class GameScene: SKScene {
     }
     
     func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
+//        let 
+        
         if(target.health - damage <= 0){
             target.health = 0
             target.healthBar.size.width = 0
