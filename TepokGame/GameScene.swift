@@ -222,7 +222,8 @@ class GameScene: SKScene {
     
     func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
 //        let 
-        
+        let slashSound = SKAction.playSoundFileNamed("slash", waitForCompletion: false)
+        run(slashSound)
         if(target.health - damage <= 0){
             target.health = 0
             target.healthBar.size.width = 0
@@ -304,8 +305,6 @@ class GameScene: SKScene {
                     
                     if node == atkBtn {
                         print("Attack")
-                        let slashSound = SKAction.playSoundFileNamed("slash", waitForCompletion: false)
-                        run(slashSound)
                         if(activeEnemy == 1){
                             if(enemy1.health <= 0){
                                 activeEnemy = 2
