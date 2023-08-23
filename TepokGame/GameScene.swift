@@ -79,7 +79,8 @@ class GameScene: SKScene {
         let battleMusic = SKAudioNode(fileNamed: "BattleSceneSong.wav")
         self.addChild(battleMusic)
         
-        char1.sprite = setupSprite(name: "Character_1")
+//        char1.sprite = setupSprite(name: "Character_1")
+        char1.sprite = buildSprite(name: "Seraphina_Attack")
         
         aerdith.sprite = setupSprite(name: "Aerdith")
         
