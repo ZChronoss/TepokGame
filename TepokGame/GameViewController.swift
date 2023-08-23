@@ -30,6 +30,7 @@ class GameViewController: UIViewController {
             skView.showsFPS = true
             skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
+//            skView.preferredFramesPerSecond = 60
             scene.scaleMode = .aspectFill
 //            scene.size = self.view.bounds.size
             skView.presentScene(scene)

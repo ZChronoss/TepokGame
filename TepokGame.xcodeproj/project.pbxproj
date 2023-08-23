@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		59A203B82A8CAEC8009FC774 /* GaugePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A203B72A8CAEC8009FC774 /* GaugePlayer.swift */; };
-		5A6A3D4C2A95EF3F0043ED0F /* Seraphina_Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A3D4A2A95EF3F0043ED0F /* Seraphina_Attack.atlas */; };
-		5A6A3D4D2A95EF3F0043ED0F /* Seraphina_Stance.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A3D4B2A95EF3F0043ED0F /* Seraphina_Stance.atlas */; };
 		5C44DB002A86437200B16CE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DAFF2A86437200B16CE8 /* AppDelegate.swift */; };
 		5C44DB042A86437200B16CE8 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB032A86437200B16CE8 /* Actions.sks */; };
 		5C44DB062A86437200B16CE8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB052A86437200B16CE8 /* GameScene.swift */; };
@@ -25,6 +23,10 @@
 		5CA1903C2A94C51C000536DD /* GaugeMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1903B2A94C51C000536DD /* GaugeMeter.swift */; };
 		5CDE8F262A8F70D80037EDB8 /* Controllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE8F252A8F70D80037EDB8 /* Controllable.swift */; };
 		5CDE8F282A8F70E30037EDB8 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE8F272A8F70E30037EDB8 /* Enemy.swift */; };
+		5CE30B592A96041800189C83 /* Aerdith_Stance.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5CE30B582A96041800189C83 /* Aerdith_Stance.atlas */; };
+		5CE30B742A9604A400189C83 /* Seraphina_Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5CE30B6B2A9604A400189C83 /* Seraphina_Attack.atlas */; };
+		5CE30B752A9604A400189C83 /* Seraphina_Stance.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5CE30B6C2A9604A400189C83 /* Seraphina_Stance.atlas */; };
+		5CE30B802A960B2400189C83 /* HellHound_Stance.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5CE30B7F2A960B2400189C83 /* HellHound_Stance.atlas */; };
 		CC129F882A94B3940092FF0B /* BattleSceneSong.wav in Resources */ = {isa = PBXBuildFile; fileRef = CC129F862A94B3920092FF0B /* BattleSceneSong.wav */; };
 		CC129F892A94B3940092FF0B /* MainMenuSong.wav in Resources */ = {isa = PBXBuildFile; fileRef = CC129F872A94B3940092FF0B /* MainMenuSong.wav */; };
 		CC5C1F962A8F706000F57578 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F952A8F706000F57578 /* MainMenu.swift */; };
@@ -53,8 +55,6 @@
 
 /* Begin PBXFileReference section */
 		59A203B72A8CAEC8009FC774 /* GaugePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugePlayer.swift; sourceTree = "<group>"; };
-		5A6A3D4A2A95EF3F0043ED0F /* Seraphina_Attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Seraphina_Attack.atlas; path = ../../../Downloads/Seraphina_Attack.atlas; sourceTree = "<group>"; };
-		5A6A3D4B2A95EF3F0043ED0F /* Seraphina_Stance.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Seraphina_Stance.atlas; path = ../../../Downloads/Seraphina_Stance.atlas; sourceTree = "<group>"; };
 		5C44DAFC2A86437200B16CE8 /* TepokGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TepokGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C44DAFF2A86437200B16CE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C44DB032A86437200B16CE8 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -75,6 +75,10 @@
 		5CA1903F2A94CABE000536DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5CDE8F252A8F70D80037EDB8 /* Controllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllable.swift; sourceTree = "<group>"; };
 		5CDE8F272A8F70E30037EDB8 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		5CE30B582A96041800189C83 /* Aerdith_Stance.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Aerdith_Stance.atlas; sourceTree = "<group>"; };
+		5CE30B6B2A9604A400189C83 /* Seraphina_Attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Seraphina_Attack.atlas; sourceTree = "<group>"; };
+		5CE30B6C2A9604A400189C83 /* Seraphina_Stance.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Seraphina_Stance.atlas; sourceTree = "<group>"; };
+		5CE30B7F2A960B2400189C83 /* HellHound_Stance.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = HellHound_Stance.atlas; sourceTree = "<group>"; };
 		CC129F862A94B3920092FF0B /* BattleSceneSong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BattleSceneSong.wav; sourceTree = "<group>"; };
 		CC129F872A94B3940092FF0B /* MainMenuSong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MainMenuSong.wav; sourceTree = "<group>"; };
 		CC5C1F952A8F706000F57578 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -141,8 +145,10 @@
 		5C44DAFE2A86437200B16CE8 /* TepokGame */ = {
 			isa = PBXGroup;
 			children = (
-				5A6A3D4A2A95EF3F0043ED0F /* Seraphina_Attack.atlas */,
-				5A6A3D4B2A95EF3F0043ED0F /* Seraphina_Stance.atlas */,
+				5CE30B7F2A960B2400189C83 /* HellHound_Stance.atlas */,
+				5CE30B6B2A9604A400189C83 /* Seraphina_Attack.atlas */,
+				5CE30B6C2A9604A400189C83 /* Seraphina_Stance.atlas */,
+				5CE30B582A96041800189C83 /* Aerdith_Stance.atlas */,
 				5CA1903F2A94CABE000536DD /* Info.plist */,
 				5CA1903D2A94CA45000536DD /* Font */,
 				CC7EC59D2A94FE8F006836B9 /* slash.mp3 */,
@@ -297,10 +303,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CE30B752A9604A400189C83 /* Seraphina_Stance.atlas in Resources */,
+				5CE30B592A96041800189C83 /* Aerdith_Stance.atlas in Resources */,
 				CC129F892A94B3940092FF0B /* MainMenuSong.wav in Resources */,
-				5A6A3D4D2A95EF3F0043ED0F /* Seraphina_Stance.atlas in Resources */,
 				CC129F882A94B3940092FF0B /* BattleSceneSong.wav in Resources */,
 				5C44DB0B2A86437200B16CE8 /* Main.storyboard in Resources */,
+				5CE30B802A960B2400189C83 /* HellHound_Stance.atlas in Resources */,
 				CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */,
 				5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */,
 				CC5C1FA02A94931D00F57578 /* OptionMenu.sks in Resources */,
@@ -308,7 +316,7 @@
 				5C44DB0D2A86437400B16CE8 /* Assets.xcassets in Resources */,
 				5C44DB102A86437400B16CE8 /* LaunchScreen.storyboard in Resources */,
 				5C44DB042A86437200B16CE8 /* Actions.sks in Resources */,
-				5A6A3D4C2A95EF3F0043ED0F /* Seraphina_Attack.atlas in Resources */,
+				5CE30B742A9604A400189C83 /* Seraphina_Attack.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53V73K3799;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TepokGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -548,6 +557,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53V73K3799;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TepokGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
