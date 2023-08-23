@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		59D03BEC2A8A0F2900BC08AE /* GaugeMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D03BEB2A8A0F2900BC08AE /* GaugeMeter.swift */; };
+		59A203B82A8CAEC8009FC774 /* GaugePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A203B72A8CAEC8009FC774 /* GaugePlayer.swift */; };
 		5C44DB002A86437200B16CE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DAFF2A86437200B16CE8 /* AppDelegate.swift */; };
 		5C44DB042A86437200B16CE8 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB032A86437200B16CE8 /* Actions.sks */; };
 		5C44DB062A86437200B16CE8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB052A86437200B16CE8 /* GameScene.swift */; };
@@ -20,6 +20,7 @@
 		5C44DB262A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */; };
 		5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */; };
 		5C8516762A8CD17B0094EB1B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8516752A8CD17B0094EB1B /* Character.swift */; };
+		5CA1903C2A94C51C000536DD /* GaugeMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1903B2A94C51C000536DD /* GaugeMeter.swift */; };
 		5CDE8F262A8F70D80037EDB8 /* Controllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE8F252A8F70D80037EDB8 /* Controllable.swift */; };
 		5CDE8F282A8F70E30037EDB8 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE8F272A8F70E30037EDB8 /* Enemy.swift */; };
 		CC129F882A94B3940092FF0B /* BattleSceneSong.wav in Resources */ = {isa = PBXBuildFile; fileRef = CC129F862A94B3920092FF0B /* BattleSceneSong.wav */; };
@@ -28,6 +29,7 @@
 		CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F972A8F707100F57578 /* MainMenu.sks */; };
 		CC5C1F9E2A94930A00F57578 /* OptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C1F9D2A94930A00F57578 /* OptionMenu.swift */; };
 		CC5C1FA02A94931D00F57578 /* OptionMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CC5C1F9F2A94931D00F57578 /* OptionMenu.sks */; };
+		CC7EC59E2A94FE8F006836B9 /* slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CC7EC59D2A94FE8F006836B9 /* slash.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		59D03BEB2A8A0F2900BC08AE /* GaugeMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeMeter.swift; sourceTree = "<group>"; };
+		59A203B72A8CAEC8009FC774 /* GaugePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugePlayer.swift; sourceTree = "<group>"; };
 		5C44DAFC2A86437200B16CE8 /* TepokGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TepokGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C44DAFF2A86437200B16CE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C44DB032A86437200B16CE8 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -64,6 +66,9 @@
 		5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TepokGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5C44DB7B2A8A370B00B16CE8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		5C8516752A8CD17B0094EB1B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		5CA1903B2A94C51C000536DD /* GaugeMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GaugeMeter.swift; path = ../../../../Downloads/GaugeMeter.swift; sourceTree = "<group>"; };
+		5CA1903E2A94CA5E000536DD /* dogica.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dogica.ttf; path = ../../../../Downloads/dogica/TTF/dogica.ttf; sourceTree = "<group>"; };
+		5CA1903F2A94CABE000536DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5CDE8F252A8F70D80037EDB8 /* Controllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllable.swift; sourceTree = "<group>"; };
 		5CDE8F272A8F70E30037EDB8 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		CC129F862A94B3920092FF0B /* BattleSceneSong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BattleSceneSong.wav; sourceTree = "<group>"; };
@@ -72,6 +77,7 @@
 		CC5C1F972A8F707100F57578 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		CC5C1F9D2A94930A00F57578 /* OptionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMenu.swift; sourceTree = "<group>"; };
 		CC5C1F9F2A94931D00F57578 /* OptionMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionMenu.sks; sourceTree = "<group>"; };
+		CC7EC59D2A94FE8F006836B9 /* slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slash.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		594923972A8B6D9100E9B6A4 /* Gauge */ = {
+			isa = PBXGroup;
+			children = (
+				5CA1903B2A94C51C000536DD /* GaugeMeter.swift */,
+				59A203B72A8CAEC8009FC774 /* GaugePlayer.swift */,
+			);
+			path = Gauge;
+			sourceTree = "<group>";
+		};
 		5C44DAF32A86437200B16CE8 = {
 			isa = PBXGroup;
 			children = (
@@ -122,9 +137,12 @@
 		5C44DAFE2A86437200B16CE8 /* TepokGame */ = {
 			isa = PBXGroup;
 			children = (
+				5CA1903F2A94CABE000536DD /* Info.plist */,
+				5CA1903D2A94CA45000536DD /* Font */,
+				CC7EC59D2A94FE8F006836B9 /* slash.mp3 */,
 				CC129F862A94B3920092FF0B /* BattleSceneSong.wav */,
 				CC129F872A94B3940092FF0B /* MainMenuSong.wav */,
-				59D03BEB2A8A0F2900BC08AE /* GaugeMeter.swift */,
+				594923972A8B6D9100E9B6A4 /* Gauge */,
 				5C44DAFF2A86437200B16CE8 /* AppDelegate.swift */,
 				5C44DB032A86437200B16CE8 /* Actions.sks */,
 				5C44DB052A86437200B16CE8 /* GameScene.swift */,
@@ -159,6 +177,14 @@
 				5C44DB252A86437400B16CE8 /* TepokGameUITestsLaunchTests.swift */,
 			);
 			path = TepokGameUITests;
+			sourceTree = "<group>";
+		};
+		5CA1903D2A94CA45000536DD /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5CA1903E2A94CA5E000536DD /* dogica.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +297,7 @@
 				CC5C1F982A8F707100F57578 /* MainMenu.sks in Resources */,
 				5C44DB7C2A8A370B00B16CE8 /* GameScene.sks in Resources */,
 				CC5C1FA02A94931D00F57578 /* OptionMenu.sks in Resources */,
+				CC7EC59E2A94FE8F006836B9 /* slash.mp3 in Resources */,
 				5C44DB0D2A86437400B16CE8 /* Assets.xcassets in Resources */,
 				5C44DB102A86437400B16CE8 /* LaunchScreen.storyboard in Resources */,
 				5C44DB042A86437200B16CE8 /* Actions.sks in Resources */,
@@ -303,10 +330,11 @@
 				5C44DB062A86437200B16CE8 /* GameScene.swift in Sources */,
 				CC5C1F9E2A94930A00F57578 /* OptionMenu.swift in Sources */,
 				CC5C1F962A8F706000F57578 /* MainMenu.swift in Sources */,
-				59D03BEC2A8A0F2900BC08AE /* GaugeMeter.swift in Sources */,
+				59A203B82A8CAEC8009FC774 /* GaugePlayer.swift in Sources */,
 				5C8516762A8CD17B0094EB1B /* Character.swift in Sources */,
 				5C44DB082A86437200B16CE8 /* GameViewController.swift in Sources */,
 				5C44DB002A86437200B16CE8 /* AppDelegate.swift in Sources */,
+				5CA1903C2A94C51C000536DD /* GaugeMeter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TepokGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -512,6 +541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TepokGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

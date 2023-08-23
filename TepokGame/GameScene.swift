@@ -33,6 +33,10 @@ class GameScene: SKScene {
     
 //    gauge
     var gauge = SKSpriteNode()
+    let gaugeGreen = GaugeLightGreen()
+    let gaugeCrit = GaugeCritGreen()
+    let gaugePlayer = GaugePlayer()
+    let gaugeRed = GaugeRed()
     
 //    action background
     var actionBack = SKSpriteNode()
@@ -146,10 +150,15 @@ class GameScene: SKScene {
         maxChar2ManaBar = aerdith.manaBar!.size.width
         
 //        redGauge = setupSprite(name: "RedGauge")
+
+        gauge.childNode(withName:"RedGauge")?.addChild(gaugeGreen)
+        gaugeGreen.addChild(gaugeCrit)
+        gaugePlayer.zPosition = 104
+
+        gauge.childNode(withName: "RedGauge")?.addChild(gaugePlayer)
         
-//        gauge.addChild(redGauge)
-//        move(sprite: gauge)
-        gaugeDefault(sprite: gauge)
+        gaugeGreen.position = CGPoint(x:400, y:0)
+        gaugeMove(sprite: gaugePlayer)
     }
     
 //    func setupBars(Menu)
@@ -212,6 +221,9 @@ class GameScene: SKScene {
     }
     
     func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
+//        let 
+        let slashSound = SKAction.playSoundFileNamed("slash", waitForCompletion: false)
+        run(slashSound)
         if(target.health - damage <= 0){
             target.health = 0
             target.healthBar.size.width = 0
@@ -241,6 +253,13 @@ class GameScene: SKScene {
     func gaugeDefault(sprite: SKSpriteNode){
         sprite.position = CGPoint(x: sprite.position.x, y: -320)
     }
+    
+    func gaugeMove(sprite: SKSpriteNode){
+        let newPos = SKAction.moveTo(x: 710, duration: 3.0)
+        let oldPos = SKAction.moveTo(x:0, duration: 3.0)
+        sprite.run(SKAction.repeatForever(SKAction.sequence([newPos,oldPos])))
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         sortedListOfMove.first!.moveIn(frame: self.frame)
@@ -342,10 +361,37 @@ class GameScene: SKScene {
         }
     }
     
+    var i = 0
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-//        move(sprite: char1)
+        
+        // Gauge Checker
+        let gaugePlayerPosition = gaugePlayer.position
+        let gaugeGreenPositionMin = gaugeGreen.position
+        let gaugeGreenPositionMax = CGPoint(x:gaugeGreenPositionMin.x+gaugeGreen.size.width, y:gaugeGreenPositionMin.y)
+        
+        let gaugeCritPositionMin = CGPoint(x: gaugeCrit.position.x + gaugeGreenPositionMin.x, y: gaugeCrit.position.y)
+        let gaugeCritPositionMax =  CGPoint(x:gaugeCritPositionMin.x+gaugeCrit.size.width, y:gaugeCritPositionMin.y)
 
+
+        if(gaugePlayerPosition.x < gaugeCritPositionMax.x && gaugePlayerPosition.x > gaugeCritPositionMin.x){
+            print("CRIT!!!")
+            
+            print(gaugePlayerPosition)
+            
+            print(gaugeCritPositionMin)
+            print(gaugeCritPositionMax)
+            
+            
+        }else if(gaugePlayerPosition.x < gaugeGreenPositionMax.x && gaugePlayerPosition.x > gaugeGreenPositionMin.x){
+            print("NormalDamage")
+            
+            print(gaugePlayerPosition)
+            
+            print(gaugeGreenPositionMin)
+            print(gaugeGreenPositionMax)
+        }
     }
     
     func buildSprite(name: String)-> SKSpriteNode{
