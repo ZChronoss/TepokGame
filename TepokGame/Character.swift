@@ -59,7 +59,36 @@ class Character: Equatable{
     }
     
     func doAttack(){
-        
+        let frames = createTexture(_name: attackAnimation)
+        sprite.removeAction(forKey: "Idle")
+        sprite.run(
+            SKAction.animate(
+                with: frames,
+                timePerFrame: 0.1
+            ),
+            withKey: "Attack"
+        )
+        sprite.run(
+            SKAction.animate(
+                with: frames,
+                timePerFrame: 0.1
+            ),
+            completion: {
+                let moveout = SKAction.move(to: self.pos, duration: 0.2)
+                let frames = self.createTexture(_name: self.idleAnimation)
+                let idle =
+                    SKAction.repeatForever(
+                        SKAction.animate(
+                            with: frames,
+                            timePerFrame: 0.15,
+                            resize: false,
+                            restore: true
+                        )
+                    )
+                let completionAction = SKAction.sequence([moveout, idle])
+                
+                self.sprite.run(completionAction)
+            })
     }
     
     func createTexture(_name: String) -> [SKTexture]{
@@ -72,34 +101,21 @@ class Character: Equatable{
         return textureArray
     }
     
-    func buildSprite(name: String){
-        let frames = createTexture(_name: name)
-        self.sprite = SKSpriteNode()
-        sprite = SKSpriteNode(imageNamed: SKTextureAtlas(named: name).textureNames[0])
+    func buildSprite(){
+        sprite.removeAllActions()
+        let frames = createTexture(_name: idleAnimation)
+        sprite = SKSpriteNode(imageNamed: SKTextureAtlas(named: idleAnimation).textureNames[0])
         sprite.setScale(3)
-        sprite.position = CGPoint(x: 640, y: 320)
-        self.sprite.run(SKAction.repeatForever(
-            SKAction.animate(
-                with: frames,
-                timePerFrame: 0.15,
-                resize: false,
-                restore: true
-            )
-        ))
-        
-        
-//        sprite.run(
-//            SKAction.repeatForever(
-//                SKAction.animate(
-//                    with: textureArray,
-//                    timePerFrame: 0.15,
-//                    resize: false,
-//                    restore: true
-//                )
-//            )
-//        )
-//
-//
-//        self.sprite = sprite
+        self.sprite.run(
+            SKAction.repeatForever(
+                SKAction.animate(
+                    with: frames,
+                    timePerFrame: 0.15,
+                    resize: false,
+                    restore: true
+                )
+            ),
+            withKey: "Idle"
+        )
     }
 }
