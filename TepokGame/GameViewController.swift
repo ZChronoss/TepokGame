@@ -27,8 +27,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         if let scene = MainMenu(fileNamed: "MainMenu"){
             let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+//            skView.showsFPS = true
+//            skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 //            skView.preferredFramesPerSecond = 60
             scene.scaleMode = .aspectFill

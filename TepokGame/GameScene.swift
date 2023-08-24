@@ -23,13 +23,13 @@ class GameScene: SKScene {
     var aerdith = Controllable(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: SKSpriteNode(), status: SKSpriteNode(), health: 200, mana: 100, atkPoint: 20, spd: 10, maxHealth: 200, maxMana: 100, pos: CGPoint(x: 987, y: 439), idleAnimation: "Aerdith_Stance", attackAnimation: "Aerdith_Attack")
 
     
-    var enemy1 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 372, y: 515.102), idleAnimation: "HellHound_Stance", attackAnimation: "HellHound_Attack")
+    var enemy1 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 372, y: 515.102), idleAnimation: "HellHound_Idle", attackAnimation: "HellHound_Attack")
     
-    var enemy2 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 202, y: 515.102), idleAnimation: "HellHound_Stance", attackAnimation: "HellHound_Attack")
+    var enemy2 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 202, y: 515.102), idleAnimation: "HellHound_Idle", attackAnimation: "HellHound_Attack")
     
-    var enemy3 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 314, y: 387.297), idleAnimation: "HellHound_Stance", attackAnimation: "HellHound_Attack")
+    var enemy3 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 314, y: 387.297), idleAnimation: "HellHound_Idle", attackAnimation: "HellHound_Attack")
     
-    var enemy4 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 144, y: 387.297), idleAnimation: "HellHound_Stance", attackAnimation: "HellHound_Attack")
+    var enemy4 = Enemy(sprite: SKSpriteNode(), healthBar: SKSpriteNode(), manaBar: nil, status: SKSpriteNode(), health: 200, mana: 0, atkPoint: 10, spd: 5, maxHealth: 200, maxMana: 0, pos: CGPoint(x: 144, y: 387.297), idleAnimation: "HellHound_Idle", attackAnimation: "HellHound_Attack")
 
     var listOfMove: [Character] = []
     var listOfControllables: [Controllable] = []
@@ -88,6 +88,7 @@ class GameScene: SKScene {
     
     var gaugeMenu = SKSpriteNode()
 
+    var pointer = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         
@@ -95,12 +96,12 @@ class GameScene: SKScene {
         let battleMusic = SKAudioNode(fileNamed: "BattleSceneSong.wav")
         self.addChild(battleMusic)
         
-        seraphina.buildSprite(name: seraphina.idleAnimation)
+        seraphina.buildSprite()
         seraphina.sprite.xScale = -3
         self.addChild(seraphina.sprite)
         seraphina.takePosition()
         
-        aerdith.buildSprite(name: aerdith.idleAnimation)
+        aerdith.buildSprite()
         aerdith.sprite.xScale = -3
         self.addChild(aerdith.sprite)
         aerdith.takePosition()
@@ -152,10 +153,12 @@ class GameScene: SKScene {
         setupMana(parentNode: manaBgChar1, manaBar: aerdith.manaBar!)
         char1HP = setupLabel(name: "HPLabel1", parent: aerdith.status)
         char1MP = setupLabel(name: "MPLabel1", parent: aerdith.status)
-        char1HP.text = "\(aerdith.health)"
-        char1HP.fontSize = 25
-        char1MP.text = "\(aerdith.mana)"
-        char1MP.fontSize = 25
+        char1HP.text = String(format: "%.0f", aerdith.health)
+        char1HP.fontSize = 20
+        char1HP.fontName = "dogica"
+        char1MP.text = String(format: "%.0f", aerdith.health)
+        char1MP.fontSize = 20
+        char1MP.fontName = "dogica"
         
         maxChar1HealthBar = aerdith.healthBar.size.width
         maxChar1ManaBar = aerdith.manaBar!.size.width
@@ -168,10 +171,12 @@ class GameScene: SKScene {
         setupMana(parentNode: manaBgChar2, manaBar: seraphina.manaBar!)
         char2HP = setupLabel(name: "HPLabel2", parent: seraphina.status)
         char2MP = setupLabel(name: "MPLabel2", parent: seraphina.status)
-        char2HP.text = "\(seraphina.health)"
-        char2HP.fontSize = 25
-        char2MP.text = "\(seraphina.mana)"
-        char2MP.fontSize = 25
+        char2HP.text = String(format: "%.0f", seraphina.health)
+        char2HP.fontSize = 20
+        char2HP.fontName = "dogica"
+        char2MP.text = String(format: "%.0f", seraphina.mana)
+        char2MP.fontSize = 20
+        char2MP.fontName = "dogica"
         
         maxChar2HealthBar = seraphina.healthBar.size.width
         maxChar2ManaBar = seraphina.manaBar!.size.width
@@ -190,6 +195,10 @@ class GameScene: SKScene {
         char3 = setupSprite(name: "Char3")
         char4 = setupSprite(name: "Char4")
         
+        pointer = SKSpriteNode(imageNamed: "Pointer 1")
+        pointer.position = CGPoint(x: 0, y: 25)
+        pointer.setScale(0.5)
+        enemy1.sprite.addChild(pointer)
     }
     
     func setupSprite(name: String) -> SKSpriteNode{
@@ -242,7 +251,7 @@ class GameScene: SKScene {
     func spawnEnemy(enemy: Enemy, name: String){
         let healthBg = enemyHealthBg.copy() as! SKNode
         
-        enemy.buildSprite(name: enemy.idleAnimation)
+        enemy.buildSprite()
         enemy.sprite.name = name
         enemy.sprite.xScale = -3
 //        enemy.sprite.yScale = 1
@@ -258,7 +267,8 @@ class GameScene: SKScene {
     }
     
     func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
-//        let 
+//        let
+        sortedListOfMove.first!.doAttack()
         let slashSound = SKAction.playSoundFileNamed("slash", waitForCompletion: false)
         run(slashSound)
         if(target.health - damage <= 0){
@@ -301,6 +311,7 @@ class GameScene: SKScene {
     
     
     func gaugeMove(sprite: SKSpriteNode){
+        sprite.zPosition = 1000
         let newPos = SKAction.moveTo(x: 710, duration: 5.0)
         let oldPos = SKAction.moveTo(x:0, duration: 5.0)
         sprite.run(SKAction.repeatForever(SKAction.sequence([newPos,oldPos])), withKey: "STOP")
@@ -343,23 +354,30 @@ class GameScene: SKScene {
                     case enemy1.sprite:
 //                        print("Enemy 1")
                         activeEnemy = enemy1.sprite.name!
+                        pointer.removeFromParent()
+                        enemy1.sprite.addChild(pointer)
                     case enemy2.sprite:
 //                        print("Enemy 2")
                         activeEnemy = enemy2.sprite.name!
+                        pointer.removeFromParent()
+                        enemy2.sprite.addChild(pointer)
                     case enemy3.sprite:
 //                        print("Enemy 3")
                         activeEnemy = enemy3.sprite.name!
+                        pointer.removeFromParent()
+                        enemy3.sprite.addChild(pointer)
                     case enemy4.sprite:
 //                        print("Enemy 4")
                         activeEnemy = enemy4.sprite.name!
+                        pointer.removeFromParent()
+                        enemy4.sprite.addChild(pointer)
                     default:
                         break
                     }
                     
                     if node == tapBtn{
-                        
-                        var multiplier = gaugeCheck()
-                        var temp = sortedListOfMove.first!.atkPoint * multiplier
+                        let multiplier = gaugeCheck()
+                        let temp = sortedListOfMove.first!.atkPoint * multiplier
                         
                         if(activeEnemy == enemy1.sprite.name!){
                             attack(target: enemy1, damage: temp, maxHealthBar: maxEnemyHealthBar)
@@ -378,7 +396,7 @@ class GameScene: SKScene {
                         char4.run(SKAction.move(to: CGPoint(x: char4.position.x, y:105.247), duration: 0.2))
                         
                         
-                        tapBg.run(SKAction.move(to: CGPoint(x: 1910.01, y: actionBack.position.y), duration: 0.2))
+                        tapBg.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
                         
                         gaugeMenu.run(SKAction.move(to:CGPoint(x:gaugeMenu.position.x, y:frame.minY-100), duration:0.2))
                         gauge.run(SKAction.move(to:CGPoint(x:gauge.position.x, y:frame.minY-100), duration:0.2))
@@ -393,7 +411,7 @@ class GameScene: SKScene {
                         flag = 1
                         gaugeMove(sprite: gaugePlayer)
 
-                        actionBack.run(SKAction.move(to: CGPoint(x: 1910.01, y: actionBack.position.y), duration: 0.2))
+                        actionBack.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
                         tapBg.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
                         
                         aerdith.status.run(SKAction.move(to: CGPoint(x: aerdith.status.position.x, y: frame.minY-100), duration: 0.2))
@@ -414,9 +432,9 @@ class GameScene: SKScene {
             
             if sortedListOfMove.first!.didAction{
                 if sortedListOfMove.first! is Controllable{
-                    actionBack.run(SKAction.move(to: CGPoint(x: 1910.01, y: actionBack.position.y), duration: 0.2))
+                    actionBack.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
                 }
-                sortedListOfMove.first!.moveOut()
+//                sortedListOfMove.first!.moveOut()
                 
                 sortedListOfMove.first!.didAction = false
                 
@@ -426,15 +444,19 @@ class GameScene: SKScene {
             }
         }
         func updateStat(){
-            char1HP.text = "\(aerdith.health)"
-            char1HP.fontSize = 25
-            char1MP.text = "\(aerdith.mana)"
-            char1MP.fontSize = 25
+            char1HP.text = String(format: "%.0f", aerdith.health)
+            char1HP.fontSize = 20
+            char1HP.fontName = "dogica"
+            char1MP.text = String(format: "%.0f", aerdith.health)
+            char1MP.fontSize = 20
+            char1MP.fontName = "dogica"
 
-            char2HP.text = "\(seraphina.health)"
-            char2HP.fontSize = 25
-            char2MP.text = "\(seraphina.mana)"
-            char2MP.fontSize = 25
+            char2HP.text = String(format: "%.0f", seraphina.health)
+            char2HP.fontSize = 20
+            char2HP.fontName = "dogica"
+            char2MP.text = String(format: "%.0f", seraphina.mana)
+            char2MP.fontSize = 20
+            char2MP.fontName = "dogica"
         }
     }
     
