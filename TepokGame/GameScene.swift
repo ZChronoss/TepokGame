@@ -5,6 +5,12 @@
 //  Created by Renaldi Antonio on 11/08/23.
 //
 
+// 666,998
+//103.842
+
+// 623,876
+// 100
+
 import SpriteKit
 import GameplayKit
 
@@ -60,6 +66,9 @@ class GameScene: SKScene {
     var char2HP = SKLabelNode()
     var char2MP = SKLabelNode()
     
+    var char3 = SKSpriteNode()
+    var char4 = SKSpriteNode()
+    
     var enemyHealthBg = SKSpriteNode()
     
     var maxChar1HealthBar = 0.0
@@ -73,6 +82,11 @@ class GameScene: SKScene {
     let green = GaugeLightGreen()
 
     var activeEnemy = "Enemy_1"
+    
+    var tapBg = SKSpriteNode()
+    var tapBtn = SKSpriteNode()
+    
+    var gaugeMenu = SKSpriteNode()
 
     
     override func didMove(to view: SKView) {
@@ -114,8 +128,7 @@ class GameScene: SKScene {
         })
         maxEnemyHealthBar = enemy1.healthBar.size.width
                 
-        gauge = setupSprite(name: "GaugeBackground")
-        gauge.addChild(green)
+
         
         actionBack = setupSprite(name: "Action_Back")
         
@@ -124,6 +137,11 @@ class GameScene: SKScene {
         magBtn = setupBtn(name: "Btn_Magic")
         itmBtn = setupBtn(name: "Btn_Item")
 //        ini kurang flee
+        
+//        Time Your Taps
+        tapBg = setupSprite(name: "Action_Tap")
+        tapBtn = setupTap(name: "Taps")
+        
         
 //        Status
         aerdith.status = setupSprite(name: "Char1_Stats")
@@ -158,19 +176,21 @@ class GameScene: SKScene {
         maxChar2HealthBar = seraphina.healthBar.size.width
         maxChar2ManaBar = seraphina.manaBar!.size.width
         
-//        redGauge = setupSprite(name: "RedGauge")
-
+        gauge = setupSprite(name: "GaugeBackground")
+//        gauge.addChild(green)
+        
         gauge.childNode(withName:"RedGauge")?.addChild(gaugeGreen)
         gaugeGreen.addChild(gaugeCrit)
+        gaugeGreen.position = CGPoint(x:400, y:0)
         gaugePlayer.zPosition = 104
 
         gauge.childNode(withName: "RedGauge")?.addChild(gaugePlayer)
+        gaugeMenu = setupSprite(name: "GaugeMenu")
         
-        gaugeGreen.position = CGPoint(x:400, y:0)
-        gaugeMove(sprite: gaugePlayer)
+        char3 = setupSprite(name: "Char3")
+        char4 = setupSprite(name: "Char4")
+        
     }
-    
-//    func setupBars(Menu)
     
     func setupSprite(name: String) -> SKSpriteNode{
         return self.childNode(withName: name) as! SKSpriteNode
@@ -186,6 +206,10 @@ class GameScene: SKScene {
     
     func setupBtn(name: String) -> SKSpriteNode{
         return actionBack.childNode(withName: name) as! SKSpriteNode
+    }
+    
+    func setupTap(name: String) -> SKSpriteNode{
+        return tapBg.childNode(withName: name) as! SKSpriteNode
     }
     
     func setupHealth(parentNode: SKSpriteNode, healthBar: SKSpriteNode){
@@ -273,20 +297,25 @@ class GameScene: SKScene {
         }
     }
     
-    func gaugeDefault(sprite: SKSpriteNode){
-        sprite.position = CGPoint(x: sprite.position.x, y: -320)
-    }
+    var flag = 0
+    
     
     func gaugeMove(sprite: SKSpriteNode){
-        let newPos = SKAction.moveTo(x: 710, duration: 3.0)
-        let oldPos = SKAction.moveTo(x:0, duration: 3.0)
-        sprite.run(SKAction.repeatForever(SKAction.sequence([newPos,oldPos])))
+        let newPos = SKAction.moveTo(x: 710, duration: 5.0)
+        let oldPos = SKAction.moveTo(x:0, duration: 5.0)
+        sprite.run(SKAction.repeatForever(SKAction.sequence([newPos,oldPos])), withKey: "STOP")
+    }
+    
+    func gaugeStop(sprite: SKSpriteNode){
+        sprite.removeAllActions()
+        sprite.position.x = 0
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         sortedListOfMove.first!.moveIn(frame: self.frame)
         if(sortedListOfMove.first! is Controllable){
-            actionBack.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
+//            actionBack.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
+//            tapBg.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
         }
         
         if let touch = touches.first {
@@ -308,6 +337,8 @@ class GameScene: SKScene {
                 }else if listOfControllables.isEmpty{
                     print("All heroes are dead")
                 }else{
+                    actionBack.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
+                    
                     switch node{
                     case enemy1.sprite:
 //                        print("Enemy 1")
@@ -325,18 +356,58 @@ class GameScene: SKScene {
                         break
                     }
                     
+                    if node == tapBtn{
+                        
+                        var multiplier = gaugeCheck()
+                        var temp = sortedListOfMove.first!.atkPoint * multiplier
+                        
+                        if(activeEnemy == enemy1.sprite.name!){
+                            attack(target: enemy1, damage: temp, maxHealthBar: maxEnemyHealthBar)
+                        }else if(activeEnemy == enemy2.sprite.name!){
+                            attack(target: enemy2, damage: temp, maxHealthBar: maxEnemyHealthBar)
+                        }else if(activeEnemy == enemy3.sprite.name!){
+                            attack(target: enemy3, damage: temp, maxHealthBar: maxEnemyHealthBar)
+                        }else if(activeEnemy == enemy4.sprite.name!){
+                            attack(target: enemy4, damage: temp, maxHealthBar: maxEnemyHealthBar)
+                        }
+                        
+                        
+                        aerdith.status.run(SKAction.move(to: CGPoint(x: aerdith.status.position.x, y: 141.229), duration: 0.2))
+                        seraphina.status.run(SKAction.move(to: CGPoint(x: seraphina.status.position.x, y: 141.229), duration: 0.2))
+                        char3.run(SKAction.move(to: CGPoint(x: char3.position.x, y:105.247), duration: 0.2))
+                        char4.run(SKAction.move(to: CGPoint(x: char4.position.x, y:105.247), duration: 0.2))
+                        
+                        
+                        tapBg.run(SKAction.move(to: CGPoint(x: 1910.01, y: actionBack.position.y), duration: 0.2))
+                        
+                        gaugeMenu.run(SKAction.move(to:CGPoint(x:gaugeMenu.position.x, y:frame.minY-100), duration:0.2))
+                        gauge.run(SKAction.move(to:CGPoint(x:gauge.position.x, y:frame.minY-100), duration:0.2))
+                        
+                        sortedListOfMove.first!.didAction = true
+                        flag = 0
+                        gaugeStop(sprite: gaugePlayer)
+                    }
+                    
                     if node == atkBtn {
                         print("Attack")
-                        if(activeEnemy == enemy1.sprite.name!){
-                            attack(target: enemy1, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
-                        }else if(activeEnemy == enemy2.sprite.name!){
-                            attack(target: enemy2, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
-                        }else if(activeEnemy == enemy3.sprite.name!){
-                            attack(target: enemy3, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
-                        }else if(activeEnemy == enemy4.sprite.name!){
-                            attack(target: enemy4, damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxEnemyHealthBar)
-                        }
-                        sortedListOfMove.first!.didAction = true
+                        flag = 1
+                        gaugeMove(sprite: gaugePlayer)
+
+                        actionBack.run(SKAction.move(to: CGPoint(x: 1910.01, y: actionBack.position.y), duration: 0.2))
+                        tapBg.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
+                        
+                        aerdith.status.run(SKAction.move(to: CGPoint(x: aerdith.status.position.x, y: frame.minY-100), duration: 0.2))
+                        seraphina.status.run(SKAction.move(to: CGPoint(x: seraphina.status.position.x, y: frame.minY-100), duration: 0.2))
+                        char3.run(SKAction.move(to: CGPoint(x: char3.position.x, y:frame.minY-100), duration: 0.2))
+                        char4.run(SKAction.move(to: CGPoint(x: char4.position.x, y:frame.minY-100), duration: 0.2))
+
+                        gaugeMenu.run(SKAction.move(to: CGPoint(x:gaugeMenu.position.x, y: 103.842), duration:0.2))
+                        gauge.run(SKAction.move(to: CGPoint(x:gauge.position.x, y:100), duration:0.2))
+
+//                        Keluarin GaugeBar
+//                        Bikin tap Button
+                        
+                         
                     }
                 }
             }
@@ -369,10 +440,7 @@ class GameScene: SKScene {
     
     var i = 0
     
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        
-        // Gauge Checker
+    func gaugeCheck() -> CGFloat{
         let gaugePlayerPosition = gaugePlayer.position
         let gaugeGreenPositionMin = gaugeGreen.position
         let gaugeGreenPositionMax = CGPoint(x:gaugeGreenPositionMin.x+gaugeGreen.size.width, y:gaugeGreenPositionMin.y)
@@ -382,22 +450,33 @@ class GameScene: SKScene {
 
 
         if(gaugePlayerPosition.x < gaugeCritPositionMax.x && gaugePlayerPosition.x > gaugeCritPositionMin.x){
-            print("CRIT!!!")
+            
             
             print(gaugePlayerPosition)
             
             print(gaugeCritPositionMin)
             print(gaugeCritPositionMax)
-            
+            return 2
             
         }else if(gaugePlayerPosition.x < gaugeGreenPositionMax.x && gaugePlayerPosition.x > gaugeGreenPositionMin.x){
-            print("NormalDamage")
             
             print(gaugePlayerPosition)
             
             print(gaugeGreenPositionMin)
             print(gaugeGreenPositionMax)
+            
+            return 1.5
         }
+        
+        return 1
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+        
+        // Gauge Checker
+
+       
     }
     
     func buildSprite(name: String)-> SKSpriteNode{
