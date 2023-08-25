@@ -61,13 +61,13 @@ class Character: Equatable{
     func doAttack(){
         let frames = createTexture(_name: attackAnimation)
         sprite.removeAction(forKey: "Idle")
-        sprite.run(
-            SKAction.animate(
-                with: frames,
-                timePerFrame: 0.1
-            ),
-            withKey: "Attack"
-        )
+//        sprite.run(
+//            SKAction.animate(
+//                with: frames,
+//                timePerFrame: 0.1
+//            ),
+//            withKey: "Attack"
+//        )
         sprite.run(
             SKAction.animate(
                 with: frames,

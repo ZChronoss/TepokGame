@@ -268,7 +268,41 @@ class GameScene: SKScene {
     
     func attack(target: Character, damage: CGFloat, maxHealthBar: CGFloat){
 //        let
-        sortedListOfMove.first!.doAttack()
+//        sortedListOfMove.first!.doAttack()
+        let frames = sortedListOfMove.first!.createTexture(_name: sortedListOfMove.first!.attackAnimation)
+        sortedListOfMove.first!.sprite.removeAction(forKey: "Idle")
+        sortedListOfMove.first!.sprite.run(
+            SKAction.animate(
+                with: frames,
+                timePerFrame: 0.1
+            ),
+            completion: {
+                let moveout = SKAction.move(to: self.sortedListOfMove.first!.pos, duration: 0.2)
+                let frames = self.sortedListOfMove.first!.createTexture(_name: self.sortedListOfMove.first!.idleAnimation)
+                let idle =
+                    SKAction.repeatForever(
+                        SKAction.animate(
+                            with: frames,
+                            timePerFrame: 0.15,
+                            resize: false,
+                            restore: true
+                        )
+                    )
+                let completionAction = SKAction.sequence([moveout, idle])
+                
+                self.sortedListOfMove.first!.sprite.run(completionAction)
+                
+                self.sortedListOfMove.first!.didAction = false
+                
+                self.sortedListOfMove.append(self.sortedListOfMove.first!)
+                self.sortedListOfMove.removeFirst()
+                
+                self.sortedListOfMove.first!.moveIn(frame: self.frame)
+                if(self.sortedListOfMove.first! is Controllable){
+                    self.flag = 0
+                }
+            }
+        )
         let slashSound = SKAction.playSoundFileNamed("slash", waitForCompletion: false)
         run(slashSound)
         if(target.health - damage <= 0){
@@ -322,23 +356,26 @@ class GameScene: SKScene {
         sprite.position.x = 0
     }
     
+    func actionBackIn(){
+        actionBack.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
+    }
+    
+    func actionBackOut(){
+        actionBack.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        sortedListOfMove.first!.moveIn(frame: self.frame)
-        if(sortedListOfMove.first! is Controllable){
-//            actionBack.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
-//            tapBg.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
-        }
-        
+//        sortedListOfMove.first!.moveIn(frame: self.frame)
         if let touch = touches.first {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
             
             if(sortedListOfMove.first! is Enemy){
                 if(!listOfControllables.isEmpty){
-                    let random = Int.random(in: 0...listOfControllables.count - 1)
-                    attack(target: listOfControllables[random], damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxChar1HealthBar)
-                    updateStat()
-                    sortedListOfMove.first!.didAction = true
+//                    let random = Int.random(in: 0...listOfControllables.count - 1)
+//                    attack(target: listOfControllables[random], damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxChar1HealthBar)
+//                    updateStat()
+//                    sortedListOfMove.first!.didAction = true
                 }
                 
                 
@@ -348,7 +385,7 @@ class GameScene: SKScene {
                 }else if listOfControllables.isEmpty{
                     print("All heroes are dead")
                 }else{
-                    actionBack.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
+//                    actionBack.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
                     
                     switch node{
                     case enemy1.sprite:
@@ -411,7 +448,7 @@ class GameScene: SKScene {
                         flag = 1
                         gaugeMove(sprite: gaugePlayer)
 
-                        actionBack.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
+//                        actionBack.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
                         tapBg.run(SKAction.move(to: CGPoint(x: frame.maxX + 30, y: actionBack.position.y), duration: 0.2))
                         
                         aerdith.status.run(SKAction.move(to: CGPoint(x: aerdith.status.position.x, y: frame.minY-100), duration: 0.2))
@@ -430,34 +467,36 @@ class GameScene: SKScene {
                 }
             }
             
-            if sortedListOfMove.first!.didAction{
-                if sortedListOfMove.first! is Controllable{
-                    actionBack.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
-                }
-//                sortedListOfMove.first!.moveOut()
-                
-                sortedListOfMove.first!.didAction = false
-                
-                sortedListOfMove.append(sortedListOfMove.first!)
-                sortedListOfMove.removeFirst()
-                
-            }
+//            if sortedListOfMove.first!.didAction{
+//                if sortedListOfMove.first! is Controllable{
+//                    actionBack.run(SKAction.move(to: CGPoint(x: 2100, y: actionBack.position.y), duration: 0.2))
+//                }
+////                sortedListOfMove.first!.moveOut()
+//
+//                sortedListOfMove.first!.didAction = false
+//
+//                sortedListOfMove.append(sortedListOfMove.first!)
+//                sortedListOfMove.removeFirst()
+//
+//            }
         }
-        func updateStat(){
-            char1HP.text = String(format: "%.0f", aerdith.health)
-            char1HP.fontSize = 20
-            char1HP.fontName = "dogica"
-            char1MP.text = String(format: "%.0f", aerdith.health)
-            char1MP.fontSize = 20
-            char1MP.fontName = "dogica"
+        
+    }
+    
+    func updateStat(){
+        char1HP.text = String(format: "%.0f", aerdith.health)
+        char1HP.fontSize = 20
+        char1HP.fontName = "dogica"
+        char1MP.text = String(format: "%.0f", aerdith.health)
+        char1MP.fontSize = 20
+        char1MP.fontName = "dogica"
 
-            char2HP.text = String(format: "%.0f", seraphina.health)
-            char2HP.fontSize = 20
-            char2HP.fontName = "dogica"
-            char2MP.text = String(format: "%.0f", seraphina.mana)
-            char2MP.fontSize = 20
-            char2MP.fontName = "dogica"
-        }
+        char2HP.text = String(format: "%.0f", seraphina.health)
+        char2HP.fontSize = 20
+        char2HP.fontName = "dogica"
+        char2MP.text = String(format: "%.0f", seraphina.mana)
+        char2MP.fontSize = 20
+        char2MP.fontName = "dogica"
     }
     
     var i = 0
@@ -496,9 +535,37 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        // Gauge Checker
-
-       
+        sortedListOfMove.first!.moveIn(frame: self.frame)
+        if sortedListOfMove.first! is Controllable {
+            if flag == 0{
+                actionBackIn()
+            }else{
+//                flag = 0
+                actionBackOut()
+            }
+            
+        }else{
+            if(!sortedListOfMove.first!.didAction){
+                let random = Int.random(in: 0...listOfControllables.count - 1)
+                attack(target: listOfControllables[random], damage: sortedListOfMove.first!.atkPoint, maxHealthBar: maxChar1HealthBar)
+                updateStat()
+                sortedListOfMove.first!.didAction = true
+            }
+            
+            
+        }
+        
+        if sortedListOfMove.first!.didAction{
+            if sortedListOfMove.first! is Controllable{
+                actionBackOut()
+            }
+            
+//            sortedListOfMove.first!.didAction = false
+//
+//            sortedListOfMove.append(sortedListOfMove.first!)
+//            sortedListOfMove.removeFirst()
+            
+        }
     }
     
     func buildSprite(name: String)-> SKSpriteNode{
