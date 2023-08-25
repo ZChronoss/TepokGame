@@ -58,39 +58,6 @@ class Character: Equatable{
         sprite.run(SKAction.move(to: self.pos, duration: 0.2))
     }
     
-    func doAttack(){
-        let frames = createTexture(_name: attackAnimation)
-        sprite.removeAction(forKey: "Idle")
-//        sprite.run(
-//            SKAction.animate(
-//                with: frames,
-//                timePerFrame: 0.1
-//            ),
-//            withKey: "Attack"
-//        )
-        sprite.run(
-            SKAction.animate(
-                with: frames,
-                timePerFrame: 0.1
-            ),
-            completion: {
-                let moveout = SKAction.move(to: self.pos, duration: 0.2)
-                let frames = self.createTexture(_name: self.idleAnimation)
-                let idle =
-                    SKAction.repeatForever(
-                        SKAction.animate(
-                            with: frames,
-                            timePerFrame: 0.15,
-                            resize: false,
-                            restore: true
-                        )
-                    )
-                let completionAction = SKAction.sequence([moveout, idle])
-                
-                self.sprite.run(completionAction)
-            })
-    }
-    
     func createTexture(_name: String) -> [SKTexture]{
         let textureAtlas = SKTextureAtlas(named: _name)
         var textureArray:[SKTexture] = []
